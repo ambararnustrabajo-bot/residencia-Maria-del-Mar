@@ -13,7 +13,7 @@
   /* ===== EDITÁ ACÁ: fotos y textos ===== */
   var GALERIAS={
     hab:[
-      {n:'Habitaciones',d:'Cada habitación es un rincón propio: luminosa, con su cama, placard, mesita de luz y ventana. Un lugar para descansar y sentirse como en casa.',f:[['img/habitacion-1.jpg'],['img/habitacion-2.jpg'],['img/habitacion-3.jpg'], ['img/habitacion-4.jpg'], ['img/habitacion-5.jpg'], ['img/habitacion-6.jpg'], ['img/habitacion-7.jpg'], ['img/habitacion-8.jpg'],['img/habitacion-9.jpg']]},
+      {n:'Habitaciones',d:'Cada habitación es un rincón propio: luminosa, con su cama, placard, mesita de luz y ventana. Un lugar para descansar y sentirse como en casa.',f:[['habitacion-1.jpg'],['habitacion-2.jpg'],['habitacion-3.jpg'], ['habitacion-4.jpg'], ['habitacion-5.jpg'], ['habitacion-6.jpg'], ['habitacion-7.jpg'], ['habitacion-8.jpg'],['habitacion-9.jpg']]},
       {n:'Cocina / comedor',d:'Acá se comparte la mesa: desayunos, almuerzos y meriendas en compañía, con comida casera y buena conversación.',f:[['img/cocina-1.jpg','Cocina y comedor']]},
       {n:'Planta baja / patio',d:'Pasillos amplios y fáciles de recorrer, y un patio para salir a tomar aire sin alejarse de casa.',f:[['img/patio-1.jpg','Planta baja y patio']]},
       {n:'Primer piso',d:'Ambientes tranquilos y con mucha luz natural, pensados para vivir con calma.',f:[['img/primerpiso-1.jpg']]}
