@@ -19,7 +19,7 @@
       {n:'Primer piso',d:'Ambientes tranquilos y con mucha luz natural, pensados para vivir con calma.',f:[['img/primerpiso-1.jpg']]}
     ],
     acti:[
-      {n:'Actividades',d:'Momentos para compartir, divertirse y sentirse acompañado.',f:[['img/actividad-1.jpg','Pintura'],['img/actividad-2.jpg', 'Clases de gimnasia'],['img/actividad-3.jpg', 'Lúdicas'],['img/actividad-4.jpg', 'Canto']]}
+      {n:'Actividades',d:'Momentos para compartir, divertirse y sentirse acompañado.',f:[['actividad-1.jpg','Pintura'],['actividad-2.jpg', 'Clases de gimnasia'],['actividad-3.jpg', 'Lúdicas'],['actividad-4.jpg', 'Canto']]}
     ]
   };
   var ROLES={Asistentes:'asistentes',Profesionales:'profesionales',Auxiliares:'auxiliares'};
