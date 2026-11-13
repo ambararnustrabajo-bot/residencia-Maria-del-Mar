@@ -108,7 +108,7 @@
   });
   
   var SERVICIOS=[
-    ['Servicio médico','Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia. Vos descansás sabiendo que alguien está atento.','servicio-1.jpg'],
+    ['Servicio médico','Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia. Vos descansás sabiendo que alguien está atento.',f:['servicio-1.jpg']],
     ['Enfermería las 24 hs','De día, de noche y los fines de semana, siempre hay alguien cuidando. Dan la medicación en hora, controlan cómo está cada persona y están a un paso si hace falta ayuda.','servicio-2.jpg'],
     ['Nutricionista','Comer bien también es cuidarse. Las comidas se piensan para cada persona: lo que necesita, lo que puede comer y lo que le gusta. Que la mesa sea salud y también un placer.','servicio-3.jpg'],
     ['Terapista ocupacional','Ayuda a seguir haciendo lo que cada uno disfruta: vestirse solo, cocinar, escribir, moverse. Con juegos y ejercicios suaves entrena la memoria y la independencia, para sentirse capaz cada día.','servicio-4.jpg'],
