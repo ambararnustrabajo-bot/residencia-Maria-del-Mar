@@ -12,16 +12,16 @@
   
   /* ===== EDITÁ ACÁ: fotos y textos ===== */
   var GALERIAS={
-    hab:[
-      {n:'Habitaciones',d:'Cada habitación es un rincón propio: luminosa, con su cama, placard, mesita de luz y ventana. Un lugar para descansar y sentirse como en casa.',f:[['habitacion-1.jpg'],['habitacion-2.jpg'],['habitacion-3.jpg'], ['habitacion-4.jpg'], ['habitacion-5.jpg'], ['habitacion-6.jpg'], ['habitacion-7.jpg'], ['habitacion-8.jpg'],['habitacion-9.jpg']]},
-      {n:'Cocina / comedor',d:'Acá se comparte la mesa: desayunos, almuerzos y meriendas en compañía, con comida casera y buena conversación.',f:[['cocina-1.jpg','Cocina y comedor']]},
-      {n:'Planta baja / patio',d:'Pasillos amplios y fáciles de recorrer, y un patio para salir a tomar aire sin alejarse de casa.',f:[['patio-1.jpg','Planta baja y patio']]},
-      {n:'Primer piso',d:'Ambientes tranquilos y con mucha luz natural, pensados para vivir con calma.',f:[['primerpiso-1.jpg']]}
-    ],
-    acti:[
-      {n:'Actividades',d:'Momentos para compartir, divertirse y sentirse acompañado.',f:[['actividad-1.jpg','Pintura'],['actividad-2.jpg', 'Clases de gimnasia'],['actividad-3.jpg', 'Lúdicas'],['actividad-4.jpg', 'Canto']]}
-    ]
-  };
+  hab:[
+    {n:'Habitaciones',d:'Cada habitación es un rincón propio: luminosa, con su cama, placard, mesita de luz y ventana. Un lugar para descansar y sentirse como en casa.',f:[['habitacion-1.jpg'],['habitacion-2.jpg'],['habitacion-3.jpg'],['habitacion-4.jpg'],['habitacion-5.jpg'],['habitacion-6.jpg'],['habitacion-7.jpg'],['habitacion-8.jpg'],['habitacion-9.jpg']]},
+    {n:'Cocina / comedor',d:'Acá se comparte la mesa: desayunos, almuerzos y meriendas en compañía, con comida casera y buena conversación.',f:[['cocina-1.jpg','Cocina y comedor']]},
+    {n:'Planta baja / patio',d:'Pasillos amplios y fáciles de recorrer, y un patio para salir a tomar aire sin alejarse de casa.',f:[['patio-1.jpg','Planta baja y patio']]},
+    {n:'Primer piso',d:'Ambientes tranquilos y con mucha luz natural, pensados para vivir con calma.',f:[['primerpiso-1.jpg','Primer piso']]}
+  ],
+  acti:[
+    {n:'Actividades',d:'Momentos para compartir, divertirse y sentirse acompañado.',f:[['actividad-1.jpg','Pintura'],['actividad-2.jpg','Clases de gimnasia'],['actividad-3.jpg','Lúdicas'],['actividad-4.jpg','Canto']]}
+  ]
+};
   var ROLES={Asistentes:'asistentes',Profesionales:'profesionales',Auxiliares:'auxiliares'};
   var FORMULARIO_POSTULACION='https://docs.google.com/forms/d/e/1FAIpQLSdngu-JR4ssHfunH-ib8SW-hn6j79v7CwRi_fTt3CTeMI3meQ/viewform?usp=publish-editor';
   var LINKS_DOCUMENTACION={Asistentes:FORMULARIO_POSTULACION,Profesionales:FORMULARIO_POSTULACION,Auxiliares:FORMULARIO_POSTULACION};
