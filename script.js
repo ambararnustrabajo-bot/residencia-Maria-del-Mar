@@ -143,7 +143,7 @@
     ir(0); arrancar();
   })();
   
-  /* ===== MENÚ SUPERIOR, SCROLL Y RECORRIDO MÓVIL (Tu lógica original) ===== */
+  /* ===== MENÚ SUPERIOR, SCROLL Y RECORRIDO MÓVIL (Tu lógica original conectada al CSS) ===== */
   (function(){
     var top=document.getElementById('top'), menu=document.getElementById('menu'), bur=document.querySelector('.burger'), dd=document.querySelector('.dd');
     var menuTriggers=[bur], ultimoDisparador=bur;
