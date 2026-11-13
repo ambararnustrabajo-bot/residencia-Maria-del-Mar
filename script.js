@@ -12,13 +12,14 @@
   /* ===== GALERÍAS ===== */
   var GALERIAS={
     hab:[
-      {n:'Habitaciones', d:'Cada habitación es un rincón propio: luminosa, con su cama, placard, mesita de luz y ventana.', f:[['habitacion-1.jpg'],['habitacion-2.jpg'],['habitacion-3.jpg'],['habitacion-4.jpg'],['habitacion-5.jpg'],['habitacion-6.jpg'],['habitacion-7.jpg'],['habitacion-8.jpg'],['habitacion-9.jpg']]},
+      {n:'Habitaciones', d:'Cada habitación es un rincón propio: luminosa, con su cama, placard, mesita de luz y ventana.', f:[['habitacion-1.jpg'],['habitacion-2.jpg'],['habitacion-3.jpg'],['habitacion-4.jpg'],['habitacion-5.jpg']]},
+      {n:'Baños', d:'Espacios prácticos, higiénicos y pensados para ofrecer comodidad y seguridad cada día.', f:[['banio-1.jpg','Baños']]},
       {n:'Cocina / comedor', d:'Acá se comparte la mesa: desayunos, almuerzos y meriendas en compañía.', f:[['cocina-1.jpg','Cocina y comedor']]},
       {n:'Planta baja / patio', d:'Pasillos amplios y fáciles de recorrer, y un patio para salir a tomar aire.', f:[['patio-1.jpg','Planta baja y patio']]},
       {n:'Primer piso', d:'Ambientes tranquilos y con mucha luz natural.', f:[['primerpiso-1.jpg','Primer piso']]}
     ],
     acti:[
-      {n:'Actividades', d:'Momentos para compartir, divertirse y sentirse acompañado.', f:[['actividad-1.jpg','Pintura'],['actividad-2.jpg','Clases de gimnasia'],['actividad-3.jpg','Lúdicas'],['actividad-4.jpg','Canto']]}
+      {n:'Actividades', d:'Momentos para compartir, divertirse y sentirse acompañado.', f:[['actividad-1.jpg','Pintura'],['actividad-2.jpg','Clases de gimnasia'],['actividad-3.jpg','Lúdicas'],['actividad-4.jpg','Talleres'],['actividad-5.jpg','Fiestas']]}
     ]
   };
   var ROLES={Asistentes:'asistentes',Profesionales:'profesionales',Auxiliares:'auxiliares'};
@@ -32,7 +33,7 @@
     var g=0, i=0, x0=null, arr=false, cambioTimer=null;
     var grad='linear-gradient(135deg,#8fd3fb,#2c5a78)';
     
-    root.innerHTML='<div class="chips"></div><p class="gdesc"></p><div class="visor" tabindex="0"><span class="amp">⤢ Ampliar</span><div class="foto"></div><p class="pie"></p><button class="fl ant" aria-label="Anterior">‹</button><button class="fl sig" aria-label="Siguiente">›</button><div class="pts"></div></div><button type="button" class="volver-categorias"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m7 7-7-7 7-7"/></svg><span>Volver a las categorías</span></button>';
+    root.innerHTML='<div class="chips"></div><p class="gdesc"></p><div class="visor" tabindex="0"><span class="amp">⤢ Ampliar</span><div class="foto"></div><p class="pie"></p><button class="fl ant" aria-label="Anterior">‹</button><button class="fl sig" aria-label="Siguiente">›</button><div class="pts"></div></div><button class="volver-categorias" type="button" aria-label="Volver a categorías"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Volver</button>';
     
     var chips=root.querySelector('.chips'), gd=root.querySelector('.gdesc'), foto=root.querySelector('.foto'), pie=root.querySelector('.pie'), pts=root.querySelector('.pts'), visor=root.querySelector('.visor'), volver=root.querySelector('.volver-categorias');
     var elegirCategoria = (galKey === 'hab');
@@ -102,17 +103,17 @@
       document.querySelectorAll('.rol').forEach(function(o){o.setAttribute('aria-expanded','false')});
       if(abierto){panel.classList.remove('on'); return;}
       b.setAttribute('aria-expanded','true');
-      panel.innerHTML='<p>Postulación para <b>'+r+'</b>. En el formulario, indicá este puesto y adjuntá tu CV junto con la documentación solicitada.</p><a class="btn" href="'+LINKS_DOCUMENTACION[r]+'" target="_blank" rel="noopener">Completar formulario</a>';
+      panel.innerHTML='<p>Postulación para <b>'+r+'</b>. En el formulario, indicá este puesto y adjuntá tu CV junto con la documentación solicitada.</p><a class="btn" href="'+LINKS_DOCUMENTACION[r]+'" target="_blank" rel="noopener">Aplicar</a>';
       panel.classList.add('on');
     };
   });
   
   var SERVICIOS=[
-    ['Servicio médico','Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia. Vos descansás sabiendo que alguien está atento.',f:['servicio-1.jpg']],
-    ['Enfermería las 24 hs','De día, de noche y los fines de semana, siempre hay alguien cuidando. Dan la medicación en hora, controlan cómo está cada persona y están a un paso si hace falta ayuda.',f: ['servicio-2.jpg']],
-    ['Nutricionista','Comer bien también es cuidarse. Las comidas se piensan para cada persona: lo que necesita, lo que puede comer y lo que le gusta. Que la mesa sea salud y también un placer.',f:['servicio-3.jpg']],
-    ['Terapista ocupacional','Ayuda a seguir haciendo lo que cada uno disfruta: vestirse solo, cocinar, escribir, moverse. Con juegos y ejercicios suaves entrena la memoria y la independencia, para sentirse capaz cada día.',f:['servicio-4.jpg']],
-    ['Actividades recreativas','Acá ningún día es igual: música, juegos, charlas y festejos. Porque la compañía, las risas y tener algo lindo para esperar también son parte del cuidado.',f:['servicio-5.jpg']]
+    ['Servicio médico','Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia. Vos descansás sabiendo que alguien está atento.', 'servicio-1.jpg'],
+    ['Enfermería las 24 hs','De día, de noche y los fines de semana, siempre hay alguien cuidando. Dan la medicación en hora, controlan cómo está cada persona y están a un paso si hace falta ayuda.', 'servicio-2.jpg'],
+    ['Nutricionista','Comer bien también es cuidarse. Las comidas se piensan para cada persona: lo que necesita, lo que puede comer y lo que le gusta. Que la mesa sea salud y también un placer.', 'servicio-3.jpg'],
+    ['Terapista ocupacional','Ayuda a seguir haciendo lo que cada uno disfruta: vestirse solo, cocinar, escribir, moverse. Con juegos y ejercicios suaves entrena la memoria y la independencia, para sentirse capaz cada día.', 'servicio-4.jpg'],
+    ['Actividades recreativas','Acá ningún día es igual: música, juegos, charlas y festejos. Porque la compañía, las risas y tener algo lindo para esperar también son parte del cuidado.', 'servicio-5.jpg']
   ];
   
   (function(){
@@ -143,45 +144,13 @@
     ir(0); arrancar();
   })();
   
-  /* ===== MENÚ SUPERIOR, SCROLL Y RECORRIDO MÓVIL (Tu lógica original conectada al CSS) ===== */
+  /* ===== MENÚ SUPERIOR, SCROLL Y HIGHLIGHT ===== */
   (function(){
     var top=document.getElementById('top'), menu=document.getElementById('menu'), bur=document.querySelector('.burger'), dd=document.querySelector('.dd');
     var menuTriggers=[bur], ultimoDisparador=bur;
-    var modoRecorridoMovil=matchMedia('(max-width:760px)');
-    var seccionesMoviles=[].slice.call(document.querySelectorAll('main section.bloque'));
-    
     function sol(){top.classList.toggle('sol',scrollY>40)}
     addEventListener('scroll',sol,{passive:true}); sol();
     
-    function mostrarSeccionMovil(seccion){
-      if(!modoRecorridoMovil.matches||!seccion||seccionesMoviles.indexOf(seccion)<0)return false;
-      document.body.classList.add('recorrido-movil','seccion-movil-activa');
-      seccionesMoviles.forEach(function(item){item.classList.toggle('seccion-activa',item===seccion);item.scrollTop=0});
-      window.scrollTo(0,0);
-      try{history.replaceState(null,'','#'+seccion.id)}catch(error){}
-      marcarSeccionActiva();
-      return true;
-    }
-    function mostrarInicioMovil(){
-      document.body.classList.add('recorrido-movil');
-      document.body.classList.remove('seccion-movil-activa');
-      seccionesMoviles.forEach(function(item){item.classList.remove('seccion-activa')});
-      window.scrollTo(0,0);
-      try{history.replaceState(null,'','#inicio')}catch(error){}
-      marcarSeccionActiva();
-    }
-    function sincronizarRecorridoMovil(){
-      if(!modoRecorridoMovil.matches){
-        document.body.classList.remove('recorrido-movil','seccion-movil-activa');
-        seccionesMoviles.forEach(function(item){item.classList.remove('seccion-activa')});
-        return;
-      }
-      document.body.classList.add('recorrido-movil');
-      var destino=location.hash.length>1&&document.getElementById(location.hash.slice(1));
-      if(destino&&mostrarSeccionMovil(destino))return;
-      document.body.classList.remove('seccion-movil-activa');
-      seccionesMoviles.forEach(function(item){item.classList.remove('seccion-activa')});
-    }
     function actualizarDisparadores(abierto){
       menuTriggers.forEach(function(disparador){disparador.setAttribute('aria-expanded',abierto)});
     }
@@ -210,7 +179,7 @@
       disparador.className='volver-menu';
       disparador.setAttribute('aria-controls','menu');
       disparador.setAttribute('aria-expanded','false');
-      disparador.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Explorar otra sección</span>';
+      disparador.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Menu';
       disparador.onclick=function(){abrirMenu(disparador)};
       menuTriggers.push(disparador);
       contenedor.appendChild(disparador);
@@ -222,51 +191,20 @@
     }
     if(menu) menu.addEventListener('click',function(e){if(e.target.closest('a'))cerrarMenu(false)});
     
-    document.addEventListener('click',function(e){
-      var enlace=e.target.closest('a[href^="#"]');
-      if(!enlace||!modoRecorridoMovil.matches)return;
-      var destinoId=enlace.getAttribute('href').slice(1);
-      if(destinoId==='inicio'){
-        e.preventDefault();
-        mostrarInicioMovil();
-        if(menu.classList.contains('abierto'))cerrarMenu(false);
-        return;
-      }
-      var destino=document.getElementById(destinoId);
-      if(destino&&mostrarSeccionMovil(destino)){
-        e.preventDefault();
-        if(menu.classList.contains('abierto'))cerrarMenu(false);
-      }
-    });
-    
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&menu.classList.contains('abierto'))cerrarMenu(true)});
-    addEventListener('resize',function(){if(innerWidth>1020)cerrarMenu();sincronizarRecorridoMovil()});
+    addEventListener('resize',function(){if(innerWidth>1020)cerrarMenu()});
     
     var links=[].slice.call(menu.querySelectorAll('a[href^="#"]'));
     var secs=links.map(function(a){var href=a.getAttribute('href');return href&&href.length>1?document.querySelector(href):null;});
     
     function marcarSeccionActiva(){
-      if(modoRecorridoMovil.matches){
-        var activa=document.querySelector('main section.seccion-activa');
-        links.forEach(function(a){a.classList.toggle('on',!!activa&&a.getAttribute('href')==='#'+activa.id)});
-        return;
-      }
       var y=scrollY+120,on=-1;
       secs.forEach(function(s,i){if(s&&s.offsetTop<=y)on=i});
       links.forEach(function(a,i){a.classList.toggle('on',i===on)});
     }
     
     addEventListener('scroll',marcarSeccionActiva,{passive:true});
-    addEventListener('pageshow',function(){
-      marcarSeccionActiva();
-      if(modoRecorridoMovil.matches)requestAnimationFrame(function(){
-        var activa=document.querySelector('main section.seccion-activa');
-        if(activa)activa.scrollTop=0;
-        else window.scrollTo(0,0);
-      });
-    });
-    modoRecorridoMovil.addEventListener('change',sincronizarRecorridoMovil);
-    sincronizarRecorridoMovil();
+    addEventListener('pageshow',marcarSeccionActiva);
     marcarSeccionActiva();
     
     var v=document.querySelector('.bgvideo');
