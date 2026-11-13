@@ -95,7 +95,6 @@
     if(!elegirCategoria) ver();
   });
   
-  /* ===== RESTO DE COMPONENTES ===== */
   var panel=document.getElementById('panel');
   document.querySelectorAll('.rol').forEach(function(b){
     b.onclick=function(){
@@ -109,11 +108,11 @@
   });
   
   var SERVICIOS=[
-    ['Servicio médico','Un médico que conoce a cada residente y cuida su salud de cerca.','servicio-1.jpg'],
-    ['Enfermería las 24 hs','De día, de noche y los fines de semana, siempre hay alguien cuidando.','servicio-2.jpg'],
-    ['Nutricionista','Comer bien también es cuidarse. Las comidas se piensan para cada persona.','servicio-3.jpg'],
-    ['Terapista ocupacional','Ayuda a seguir haciendo lo que cada uno disfruta con juegos y ejercicios suaves.','servicio-4.jpg'],
-    ['Actividades recreativas','Música, juegos, charlas y festejos diarios.','servicio-5.jpg']
+    ['Servicio médico','Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia. Vos descansás sabiendo que alguien está atento.','servicio-1.jpg'],
+    ['Enfermería las 24 hs','De día, de noche y los fines de semana, siempre hay alguien cuidando. Dan la medicación en hora, controlan cómo está cada persona y están a un paso si hace falta ayuda.','servicio-2.jpg'],
+    ['Nutricionista','Comer bien también es cuidarse. Las comidas se piensan para cada persona: lo que necesita, lo que puede comer y lo que le gusta. Que la mesa sea salud y también un placer.','servicio-3.jpg'],
+    ['Terapista ocupacional','Ayuda a seguir haciendo lo que cada uno disfruta: vestirse solo, cocinar, escribir, moverse. Con juegos y ejercicios suaves entrena la memoria y la independencia, para sentirse capaz cada día.','servicio-4.jpg'],
+    ['Actividades recreativas','Acá ningún día es igual: música, juegos, charlas y festejos. Porque la compañía, las risas y tener algo lindo para esperar también son parte del cuidado.','servicio-5.jpg']
   ];
   
   (function(){
@@ -144,42 +143,147 @@
     ir(0); arrancar();
   })();
   
-  /* ===== MENÚ ===== */
+  /* ===== MENÚ SUPERIOR, SCROLL Y RECORRIDO MÓVIL (Tu lógica original) ===== */
   (function(){
-    var top=document.getElementById('top'), menu=document.getElementById('menu'), bur=document.querySelector('.burger');
-    function sol(){if(top) top.classList.toggle('sol',scrollY>40)}
+    var top=document.getElementById('top'), menu=document.getElementById('menu'), bur=document.querySelector('.burger'), dd=document.querySelector('.dd');
+    var menuTriggers=[bur], ultimoDisparador=bur;
+    var modoRecorridoMovil=matchMedia('(max-width:760px)');
+    var seccionesMoviles=[].slice.call(document.querySelectorAll('main section.bloque'));
+    
+    function sol(){top.classList.toggle('sol',scrollY>40)}
     addEventListener('scroll',sol,{passive:true}); sol();
-    if(bur){
-      bur.onclick=function(){
-        var abierto=menu.classList.toggle('abierto');
-        bur.textContent=abierto?'×':'☰';
-        document.body.classList.toggle('menu-abierto',abierto);
-      };
+    
+    function mostrarSeccionMovil(seccion){
+      if(!modoRecorridoMovil.matches||!seccion||seccionesMoviles.indexOf(seccion)<0)return false;
+      document.body.classList.add('recorrido-movil','seccion-movil-activa');
+      seccionesMoviles.forEach(function(item){item.classList.toggle('seccion-activa',item===seccion);item.scrollTop=0});
+      window.scrollTo(0,0);
+      try{history.replaceState(null,'','#'+seccion.id)}catch(error){}
+      marcarSeccionActiva();
+      return true;
     }
-    if(menu){
-      menu.addEventListener('click',function(e){if(e.target.closest('a')) menu.classList.remove('abierto')});
+    function mostrarInicioMovil(){
+      document.body.classList.add('recorrido-movil');
+      document.body.classList.remove('seccion-movil-activa');
+      seccionesMoviles.forEach(function(item){item.classList.remove('seccion-activa')});
+      window.scrollTo(0,0);
+      try{history.replaceState(null,'','#inicio')}catch(error){}
+      marcarSeccionActiva();
     }
-    var links=[].slice.call(document.querySelectorAll('#menu a[href^="#"]'));
-    var secs=links.map(function(a){var h=a.getAttribute('href'); return h&&h.length>1?document.querySelector(h):null;});
-    function marcar(){
-      var y=scrollY+120, on=-1;
+    function sincronizarRecorridoMovil(){
+      if(!modoRecorridoMovil.matches){
+        document.body.classList.remove('recorrido-movil','seccion-movil-activa');
+        seccionesMoviles.forEach(function(item){item.classList.remove('seccion-activa')});
+        return;
+      }
+      document.body.classList.add('recorrido-movil');
+      var destino=location.hash.length>1&&document.getElementById(location.hash.slice(1));
+      if(destino&&mostrarSeccionMovil(destino))return;
+      document.body.classList.remove('seccion-movil-activa');
+      seccionesMoviles.forEach(function(item){item.classList.remove('seccion-activa')});
+    }
+    function actualizarDisparadores(abierto){
+      menuTriggers.forEach(function(disparador){disparador.setAttribute('aria-expanded',abierto)});
+    }
+    function cerrarMenu(devolverFoco){
+      menu.classList.remove('abierto');
+      actualizarDisparadores(false,null);
+      bur.setAttribute('aria-label','Abrir menú');
+      bur.textContent='☰';
+      document.body.classList.remove('menu-abierto');
+      if(devolverFoco&&ultimoDisparador)ultimoDisparador.focus();
+    }
+    function abrirMenu(disparador){
+      ultimoDisparador=disparador;
+      menu.classList.add('abierto');
+      actualizarDisparadores(true);
+      bur.setAttribute('aria-label','Cerrar menú');
+      bur.textContent='×';
+      document.body.classList.add('menu-abierto');
+    }
+    if(bur) bur.onclick=function(){if(menu.classList.contains('abierto'))cerrarMenu(true);else abrirMenu(bur)};
+    
+    document.querySelectorAll('main section.bloque').forEach(function(section){
+      var contenedor=section.querySelector('.wrap')||section;
+      var disparador=document.createElement('button');
+      disparador.type='button';
+      disparador.className='volver-menu';
+      disparador.setAttribute('aria-controls','menu');
+      disparador.setAttribute('aria-expanded','false');
+      disparador.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Explorar otra sección</span>';
+      disparador.onclick=function(){abrirMenu(disparador)};
+      menuTriggers.push(disparador);
+      contenedor.appendChild(disparador);
+    });
+    
+    if(dd && dd.querySelector('button')){
+      dd.querySelector('button').onclick=function(e){e.stopPropagation();var a=dd.classList.toggle('abierto');this.setAttribute('aria-expanded',a)};
+      document.addEventListener('click',function(){dd.classList.remove('abierto')});
+    }
+    if(menu) menu.addEventListener('click',function(e){if(e.target.closest('a'))cerrarMenu(false)});
+    
+    document.addEventListener('click',function(e){
+      var enlace=e.target.closest('a[href^="#"]');
+      if(!enlace||!modoRecorridoMovil.matches)return;
+      var destinoId=enlace.getAttribute('href').slice(1);
+      if(destinoId==='inicio'){
+        e.preventDefault();
+        mostrarInicioMovil();
+        if(menu.classList.contains('abierto'))cerrarMenu(false);
+        return;
+      }
+      var destino=document.getElementById(destinoId);
+      if(destino&&mostrarSeccionMovil(destino)){
+        e.preventDefault();
+        if(menu.classList.contains('abierto'))cerrarMenu(false);
+      }
+    });
+    
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&menu.classList.contains('abierto'))cerrarMenu(true)});
+    addEventListener('resize',function(){if(innerWidth>1020)cerrarMenu();sincronizarRecorridoMovil()});
+    
+    var links=[].slice.call(menu.querySelectorAll('a[href^="#"]'));
+    var secs=links.map(function(a){var href=a.getAttribute('href');return href&&href.length>1?document.querySelector(href):null;});
+    
+    function marcarSeccionActiva(){
+      if(modoRecorridoMovil.matches){
+        var activa=document.querySelector('main section.seccion-activa');
+        links.forEach(function(a){a.classList.toggle('on',!!activa&&a.getAttribute('href')==='#'+activa.id)});
+        return;
+      }
+      var y=scrollY+120,on=-1;
       secs.forEach(function(s,i){if(s&&s.offsetTop<=y)on=i});
       links.forEach(function(a,i){a.classList.toggle('on',i===on)});
     }
-    addEventListener('scroll',marcar,{passive:true}); marcar();
+    
+    addEventListener('scroll',marcarSeccionActiva,{passive:true});
+    addEventListener('pageshow',function(){
+      marcarSeccionActiva();
+      if(modoRecorridoMovil.matches)requestAnimationFrame(function(){
+        var activa=document.querySelector('main section.seccion-activa');
+        if(activa)activa.scrollTop=0;
+        else window.scrollTo(0,0);
+      });
+    });
+    modoRecorridoMovil.addEventListener('change',sincronizarRecorridoMovil);
+    sincronizarRecorridoMovil();
+    marcarSeccionActiva();
+    
+    var v=document.querySelector('.bgvideo');
+    if(v&&matchMedia('(prefers-reduced-motion: reduce)').matches) v.pause();
   })();
   
   /* ===== FOTO AMPLIADA ===== */
   var LB=(function(){
-    var el=document.getElementById('lb'), im=el?el.querySelector('.lb-f'):null, cap=el?el.querySelector('.lb-c'):null, L=[], k=0;
+    var el=document.getElementById('lb'),im=el?el.querySelector('.lb-f'):null,cap=el?el.querySelector('.lb-c'):null,L=[],k=0;
     if(!el) return {abrir:function(){}};
-    function ver(){var d=L[k]; im.style.backgroundImage='url("'+d[0]+'"),linear-gradient(135deg,#8fd3fb,#2c5a78)'; cap.textContent=d[1]+(L.length>1?'  ·  '+(k+1)+' / '+L.length:'');}
-    function mover(n){k=(k+n+L.length)%L.length; ver();}
-    function cerrar(){el.classList.remove('on'); document.body.style.overflow='';}
-    var bx=el.querySelector('.lb-x'), ba=el.querySelector('.lb-a'), bs=el.querySelector('.lb-s');
-    if(bx) bx.onclick=cerrar;
-    if(ba) ba.onclick=function(){mover(-1)};
-    if(bs) bs.onslib=function(){mover(1)};
+    function ver(){var d=L[k];im.style.backgroundImage='url("'+d[0]+'"),linear-gradient(135deg,#8fd3fb,#2c5a78)';cap.textContent=d[1]+(L.length>1?'  ·  '+(k+1)+' / '+L.length:'')}
+    function mover(n){k=(k+n+L.length)%L.length;ver()}
+    function cerrar(){el.classList.remove('on');document.body.style.overflow=''}
+    var btnX=el.querySelector('.lb-x'),btnA=el.querySelector('.lb-a'),btnS=el.querySelector('.lb-s');
+    if(btnX) btnX.onclick=cerrar;
+    if(btnA) btnA.onclick=function(){mover(-1)};
+    if(btnS) btnS.onclick=function(){mover(1)};
     el.onclick=function(e){if(e.target===el)cerrar()};
     addEventListener('keydown',function(e){
       if(!el.classList.contains('on'))return;
@@ -187,5 +291,5 @@
       if(e.key==='ArrowLeft')mover(-1);
       if(e.key==='ArrowRight')mover(1);
     });
-    return {abrir:function(list,i){L=list; k=i; el.classList.toggle('uno',L.length<2); ver(); el.classList.add('on'); document.body.style.overflow='hidden';}};
+    return {abrir:function(list,i){L=list;k=i;el.classList.toggle('uno',L.length<2);ver();el.classList.add('on');document.body.style.overflow='hidden'}};
   })();
