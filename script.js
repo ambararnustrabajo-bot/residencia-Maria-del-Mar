@@ -24,7 +24,6 @@ var GALERIAS = {
   ]
 };
 
-//poner el doc formulario
 var FORMULARIO_POSTULACION = 'https://docs.google.com/forms/d/e/1FAIpQLSdngu-JR4ssHfunH-ib8SW-hn6j79v7CwRi_fTt3CTeMI3meQ/viewform?usp=publish-editor';
 var LINKS_DOCUMENTACION = {
   Asistentes: FORMULARIO_POSTULACION,
@@ -250,7 +249,7 @@ var SERVICIOS = [
   var menu = document.getElementById('menu');
   var burger = document.querySelector('.burger');
   var dd = document.querySelector('.dd');
-  var sections = Array.from(document.querySelectorAll('main section.bloque'));
+  var sections = Array.from(document.querySelectorAll('main section.bloque, main section.pronto'));
   var mobileQuery = window.matchMedia('(max-width: 760px)');
   var menuTriggers = burger ? [burger] : [];
   var ultimoDisparador = burger;
@@ -292,6 +291,8 @@ var SERVICIOS = [
   }
 
   sections.forEach(function(section){
+    if (!section.classList.contains('bloque')) section.classList.add('bloque');
+    if (section.querySelector('.volver-menu')) return;
     var contenedor = section.querySelector('.wrap') || section;
     var disparador = document.createElement('button');
     disparador.type = 'button';
@@ -316,7 +317,10 @@ var SERVICIOS = [
 
   function activateSectionById(id){
     var sec = id ? document.getElementById(id) : null;
-    if (!isMobile() || !sec || !sec.classList.contains('bloque')) return false;
+    if (!sec && (id === 'dolores' || id === 'pronto')) {
+      sec = document.querySelector('section.pronto');
+    }
+    if (!isMobile() || !sec) return false;
 
     document.body.classList.add('recorrido-movil', 'seccion-movil-activa');
     sections.forEach(function(el){
