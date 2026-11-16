@@ -187,11 +187,11 @@ document.querySelectorAll('.rol').forEach(function(b){
 
 /* ===== SERVICIOS (Imagen y descripción debajo de cada servicio al tocar) ===== */
 var SERVICIOS = [
-  ['Servicio médico', 'Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia. Vos descansás sabiendo que alguien te cuida cada día.', 'servicio-1.jpg'],
-  ['Enfermería las 24 hs', 'De día, de noche y los fines de semana, siempre hay alguien cuidando. Dan la medicación en hora, controlan cómo está cada persona y están a un paso si hace falta.', 'servicio-2.jpg'],
-  ['Nutricionista', 'Comer bien también es cuidarse. Las comidas se piensan para cada persona: lo que necesita, lo que puede comer y lo que le gusta. Que la mesa sea salud y también un placer.', 'servicio-3.jpg'],
-  ['Terapista ocupacional', 'Ayuda a seguir haciendo lo que cada uno disfruta: vestirse solo, cocinar, escribir, moverse. Con juegos y ejercicios suaves entrena la memoria y la independencia, para que cada día sea más cómodo.', 'servicio-4.jpg'],
-  ['Actividades recreativas', 'Acá ningún día es igual: música, juegos, charlas y festejos. Porque la compañía, las risas y tener algo lindo para esperar también son parte del cuidado.', 'servicio-5.jpg']
+  ['Servicio médico', 'Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia.', 'servicio-1.jpg'],
+  ['Enfermería las 24 hs', 'Presencia permanente de enfermeras, que controlan y atienden a los residentes; otorgando los cuidados que cada uno requiere', 'servicio-2.jpg'],
+  ['Nutricionista', 'La equilibrada y buena alimentación también es parte de la salud. Las menúes se elaboran de acuerdo a la necesidad de cada residente; brindando variedad y calidad. ', 'servicio-3.jpg'],
+  ['Terapista ocupacional', ' Colabora a mantener la independencia de cada residente: vestirse o desplazarse solo, escribir. A través de actividades lúdicas  y ejercitación leve, entrenan la memoria y la autonomía, para que cada día se sientan mejor.', 'servicio-4.jpg'],
+  ['Actividades recreativas', 'Acá ningún día es igual: música, juegos, charlas y festejos. Porque la compañía, las risas y tener algo lindo para compartir también son parte del cuidado.', 'servicio-5.jpg']
 ];
 
 (function(){
