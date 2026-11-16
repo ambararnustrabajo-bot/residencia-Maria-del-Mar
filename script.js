@@ -14,7 +14,6 @@
 var GALERIAS = {
   hab: [
     { n: 'Habitaciones', d: 'Cada habitación es un rincón propio: luminosa, con su cama, placard, mesita de luz y ventana.', f: [['habitacion-1.jpg'], ['habitacion-2.jpg'], ['habitacion-4.jpg'], ['habitacion-5.jpg'], ['habitacion-6.jpg'], ['habitacion-7.jpg'], ['habitacion-8.jpg'], ['habitacion-9.jpg']] },
-    { n: 'Baños', d: 'Espacios prácticos, higiénicos y pensados para ofrecer comodidad y seguridad cada día.', f: [['banio-1.jpg', 'Baños']] },
     { n: 'Cocina / comedor', d: 'Acá se comparte la mesa: desayunos, almuerzos y meriendas en compañía.', f: [['cocina-1.jpg', 'Cocina y comedor']] },
     { n: 'Planta baja / patio', d: 'Pasillos amplios y fáciles de recorrer, y un patio para salir a tomar aire.', f: [['patio-1.jpg', 'Planta baja y patio']] },
     { n: 'Primer piso', d: 'Ambientes tranquilos y con mucha luz natural.', f: [['primerpiso-1.jpg', 'Primer piso']] }
