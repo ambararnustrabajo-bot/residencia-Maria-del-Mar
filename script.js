@@ -28,7 +28,8 @@ var FORMULARIO_POSTULACION = 'https://docs.google.com/forms/d/e/1FAIpQLSdngu-JR4
 var LINKS_DOCUMENTACION = {
   Asistentes: FORMULARIO_POSTULACION,
   Profesionales: FORMULARIO_POSTULACION,
-  Auxiliares: FORMULARIO_POSTULACION
+  Auxiliares: FORMULARIO_POSTULACION,
+  Enfermero: FORMULARIO_POSTULACION 
 };
 
 document.querySelectorAll('[data-galeria]').forEach(function(root){
