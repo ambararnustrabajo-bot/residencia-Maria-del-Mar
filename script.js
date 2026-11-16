@@ -234,7 +234,7 @@ var SERVICIOS = [
   function arrancar(){
     clearInterval(t);
     if (quieto) return;
-    t = setInterval(function(){ ir((k + 1) % SERVICIOS.length); }, 7000);
+    t = setInterval(function(){ ir((k + 1) % SERVICIOS.length); }, 12000);
   }
 
   root.onmouseenter = function(){ clearInterval(t); };
