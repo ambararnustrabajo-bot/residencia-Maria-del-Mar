@@ -183,11 +183,11 @@ document.querySelectorAll('.rol').forEach(function(b){
 });
 
 var SERVICIOS = [
-  ['Servicio médico', 'Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia. Vos descansás sabiendo que alguien te cuida cada día.', 'img/servicio-medico.jpg'],
-  ['Enfermería las 24 hs', 'De día, de noche y los fines de semana, siempre hay alguien cuidando. Dan la medicación en hora, controlan cómo está cada persona y están a un paso si hace falta.', 'img/enfermeria.jpg'],
-  ['Nutricionista', 'Comer bien también es cuidarse. Las comidas se piensan para cada persona: lo que necesita, lo que puede comer y lo que le gusta. Que la mesa sea salud y también un placer.', 'img/nutricion.jpg'],
-  ['Terapista ocupacional', 'Ayuda a seguir haciendo lo que cada uno disfruta: vestirse solo, cocinar, escribir, moverse. Con juegos y ejercicios suaves entrena la memoria y la independencia, para que cada día sea más cómodo.', 'img/terapia.jpg'],
-  ['Actividades recreativas', 'Acá ningún día es igual: música, juegos, charlas y festejos. Porque la compañía, las risas y tener algo lindo para esperar también son parte del cuidado.', 'img/actividades.jpg']
+  ['Servicio médico', 'Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia. Vos descansás sabiendo que alguien te cuida cada día.', 'servicio-medico.jpg'],
+  ['Enfermería las 24 hs', 'De día, de noche y los fines de semana, siempre hay alguien cuidando. Dan la medicación en hora, controlan cómo está cada persona y están a un paso si hace falta.', 'enfermeria.jpg'],
+  ['Nutricionista', 'Comer bien también es cuidarse. Las comidas se piensan para cada persona: lo que necesita, lo que puede comer y lo que le gusta. Que la mesa sea salud y también un placer.', 'nutricion.jpg'],
+  ['Terapista ocupacional', 'Ayuda a seguir haciendo lo que cada uno disfruta: vestirse solo, cocinar, escribir, moverse. Con juegos y ejercicios suaves entrena la memoria y la independencia, para que cada día sea más cómodo.', 'terapia.jpg'],
+  ['Actividades recreativas', 'Acá ningún día es igual: música, juegos, charlas y festejos. Porque la compañía, las risas y tener algo lindo para esperar también son parte del cuidado.', 'actividades.jpg']
 ];
 
 (function(){
@@ -250,12 +250,16 @@ var SERVICIOS = [
 })();
 
 /* ===== MENÚ SUPERIOR Y NAVEGACIÓN EN MÓVIL ===== */
+/* ===== MENÚ SUPERIOR Y NAVEGACIÓN EN MÓVIL ===== */
 (function(){
   var top = document.getElementById('top');
   var menu = document.getElementById('menu');
   var burger = document.querySelector('.burger');
+  var dd = document.querySelector('.dd');
   var sections = Array.from(document.querySelectorAll('main section.bloque'));
   var mobileQuery = window.matchMedia('(max-width: 760px)');
+  var menuTriggers = burger ? [burger] : [];
+  var ultimoDisparador = burger;
 
   function isMobile(){
     return mobileQuery.matches;
@@ -265,47 +269,81 @@ var SERVICIOS = [
     if (top) top.classList.toggle('sol', window.scrollY > 40);
   }
 
-  function closeMenu(){
+  function actualizarDisparadores(abierto){
+    menuTriggers.forEach(function(btn){
+      if (btn) btn.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+    });
+  }
+
+  function closeMenu(devolverFoco){
     if (!menu) return;
     menu.classList.remove('abierto');
     document.body.classList.remove('menu-abierto');
+    actualizarDisparadores(false);
     if (burger) {
       burger.textContent = '☰';
       burger.setAttribute('aria-label', 'Abrir menú');
-      burger.setAttribute('aria-expanded', 'false');
     }
+    if (devolverFoco && ultimoDisparador) ultimoDisparador.focus();
   }
 
-  function openMenu(){
+  function openMenu(disparador){
     if (!menu) return;
+    ultimoDisparador = disparador || burger;
     menu.classList.add('abierto');
     document.body.classList.add('menu-abierto');
+    actualizarDisparadores(true);
     if (burger) {
       burger.textContent = '×';
       burger.setAttribute('aria-label', 'Cerrar menú');
-      burger.setAttribute('aria-expanded', 'true');
     }
+  }
+
+  // Crea el botón "Explorar otra sección" al final de cada sección en móvil
+  sections.forEach(function(section){
+    var contenedor = section.querySelector('.wrap') || section;
+    var disparador = document.createElement('button');
+    disparador.type = 'button';
+    disparador.className = 'volver-menu';
+    disparador.setAttribute('aria-controls', 'menu');
+    disparador.setAttribute('aria-expanded', 'false');
+    disparador.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Explorar otra sección</span>';
+    disparador.onclick = function(){ openMenu(disparador); };
+    menuTriggers.push(disparador);
+    contenedor.appendChild(disparador);
+  });
+
+  function showInicioMobile(){
+    document.body.classList.add('recorrido-movil');
+    document.body.classList.remove('seccion-movil-activa');
+    sections.forEach(function(el){
+      el.classList.remove('seccion-activa');
+    });
+    var hero = document.querySelector('.hero');
+    if (hero) hero.scrollTop = 0;
+    window.scrollTo(0, 0);
+    marcarSeccionActiva();
   }
 
   function activateSectionById(id){
     var sec = id ? document.getElementById(id) : null;
     if (!isMobile() || !sec || !sec.classList.contains('bloque')) return false;
 
-    document.body.classList.add('recorrido-movil');
-    document.body.classList.add('seccion-movil-activa');
+    document.body.classList.add('recorrido-movil', 'seccion-movil-activa');
     sections.forEach(function(el){
-      el.classList.toggle('seccion-activa', el === sec);
+      var activa = (el === sec);
+      el.classList.toggle('seccion-activa', activa);
+      if (activa) el.scrollTop = 0;
     });
 
-    sec.scrollIntoView({ behavior: 'auto', block: 'start' });
-    closeMenu();
+    window.scrollTo(0, 0);
+    marcarSeccionActiva();
     return true;
   }
 
   function syncMobileState(){
     if (!isMobile()) {
-      document.body.classList.remove('recorrido-movil');
-      document.body.classList.remove('seccion-movil-activa');
+      document.body.classList.remove('recorrido-movil', 'seccion-movil-activa');
       sections.forEach(function(el){
         el.classList.remove('seccion-activa');
       });
@@ -314,54 +352,67 @@ var SERVICIOS = [
 
     document.body.classList.add('recorrido-movil');
     var id = location.hash ? location.hash.replace('#', '') : '';
-    if (!id || !activateSectionById(id)) {
-      document.body.classList.remove('seccion-movil-activa');
-      sections.forEach(function(el){
-        el.classList.remove('seccion-activa');
-      });
+    if (!id || id === 'inicio' || !activateSectionById(id)) {
+      showInicioMobile();
     }
   }
 
   if (burger) {
     burger.addEventListener('click', function(){
       if (menu && menu.classList.contains('abierto')) {
-        closeMenu();
+        closeMenu(true);
       } else {
-        openMenu();
+        openMenu(burger);
       }
     });
   }
 
-  if (menu) {
-    menu.addEventListener('click', function(e){
-      var link = e.target.closest('a[href^="#"]');
-      if (!link) return;
-
-      var href = link.getAttribute('href');
-      if (!href || href.length <= 1) return;
-
-      if (!isMobile()) {
-        closeMenu();
-        return;
-      }
-
-      e.preventDefault();
-      if (href === '#inicio') {
-        if (location.hash !== '#inicio') history.pushState(null, '', '#inicio');
-        document.body.classList.add('recorrido-movil');
-        document.body.classList.remove('seccion-movil-activa');
-        sections.forEach(function(el){
-          el.classList.remove('seccion-activa');
-        });
-        closeMenu();
-        return;
-      }
-
-      if (activateSectionById(href.replace('#', '')) && location.hash !== href) {
-        history.pushState(null, '', href);
-      }
+  // Desplegable de Sedes en escritorio
+  if (dd && dd.querySelector('button')) {
+    dd.querySelector('button').addEventListener('click', function(e){
+      e.stopPropagation();
+      var abierto = dd.classList.toggle('abierto');
+      this.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+    });
+    document.addEventListener('click', function(){
+      dd.classList.remove('abierto');
     });
   }
+
+  // Intercepta clics en cualquier enlace interno (#...) en toda la página
+  document.addEventListener('click', function(e){
+    var link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+
+    var href = link.getAttribute('href');
+    if (!href || href.length <= 1) return;
+
+    if (!isMobile()) {
+      if (menu && menu.contains(link)) closeMenu(false);
+      return;
+    }
+
+    e.preventDefault();
+    var targetId = href.replace('#', '');
+
+    if (targetId === 'inicio') {
+      if (location.hash !== '#inicio') history.pushState(null, '', '#inicio');
+      showInicioMobile();
+      closeMenu(false);
+      return;
+    }
+
+    if (activateSectionById(targetId)) {
+      if (location.hash !== href) history.pushState(null, '', href);
+      closeMenu(false);
+    }
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && menu && menu.classList.contains('abierto')) {
+      closeMenu(true);
+    }
+  });
 
   var links = menu ? Array.from(menu.querySelectorAll('a[href^="#"]')) : [];
   var secs = links.map(function(a){
@@ -370,6 +421,13 @@ var SERVICIOS = [
   });
 
   function marcarSeccionActiva(){
+    if (isMobile()) {
+      var activa = document.querySelector('main section.seccion-activa');
+      links.forEach(function(a){
+        a.classList.toggle('on', !!activa && a.getAttribute('href') === '#' + activa.id);
+      });
+      return;
+    }
     var y = window.scrollY + 120;
     var on = -1;
     secs.forEach(function(s, i){
@@ -388,13 +446,13 @@ var SERVICIOS = [
   window.addEventListener('hashchange', syncMobileState);
   window.addEventListener('popstate', syncMobileState);
   window.addEventListener('resize', function(){
-    if (window.innerWidth > 1020) closeMenu();
+    if (window.innerWidth > 1020) closeMenu(false);
     syncMobileState();
   });
 
   updateTopState();
-  marcarSeccionActiva();
   syncMobileState();
+  marcarSeccionActiva();
 
   var v = document.querySelector('.bgvideo');
   if (v && matchMedia('(prefers-reduced-motion: reduce)').matches) {
