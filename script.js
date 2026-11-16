@@ -13,17 +13,18 @@
 /* ===== GALERÍAS (Rápidas y con reproducción automática) ===== */
 var GALERIAS = {
   hab: [
-    { n: 'Habitaciones', d: 'Cada habitación es un rincón propio: luminosa, con su cama, placard, mesita de luz y ventana.', f: [['habitacion-1.jpg'], ['habitacion-2.jpg'], ['habitacion-3.jpg'], ['habitacion-4.jpg'], ['habitacion-5.jpg']] },
+    { n: 'Habitaciones', d: 'Cada habitación es un rincón propio: luminosa, con su cama, placard, mesita de luz y ventana.', f: [['habitacion-1.jpg'], ['habitacion-2.jpg'], ['habitacion-4.jpg'], ['habitacion-5.jpg'], ['habitacion-6.jpg'], ['habitacion-7.jpg'], ['habitacion-8.jpg'], ['habitacion-9.jpg']] },
     { n: 'Baños', d: 'Espacios prácticos, higiénicos y pensados para ofrecer comodidad y seguridad cada día.', f: [['banio-1.jpg', 'Baños']] },
     { n: 'Cocina / comedor', d: 'Acá se comparte la mesa: desayunos, almuerzos y meriendas en compañía.', f: [['cocina-1.jpg', 'Cocina y comedor']] },
     { n: 'Planta baja / patio', d: 'Pasillos amplios y fáciles de recorrer, y un patio para salir a tomar aire.', f: [['patio-1.jpg', 'Planta baja y patio']] },
     { n: 'Primer piso', d: 'Ambientes tranquilos y con mucha luz natural.', f: [['primerpiso-1.jpg', 'Primer piso']] }
   ],
   acti: [
-    { n: 'Actividades', d: 'Momentos para compartir, divertirse y sentirse acompañado.', f: [['actividad-1.jpg', 'Pintura'], ['actividad-2.jpg', 'Clases de gimnasia'], ['actividad-3.jpg', 'Lúdicas'], ['actividad-4.jpg', 'Talleres']] }
+    { n: 'Actividades', d: 'Momentos para compartir, divertirse y sentirse acompañado.', f: [['actividad-1.jpg', 'Pintura'], ['actividad-2.jpg', 'Clases de gimnasia'], ['actividad-3.jpeg', 'Lúdicas'], ['actividad-4.jpeg', 'Talleres']] }
   ]
 };
 
+//ACA PONER EL FORM
 var FORMULARIO_POSTULACION = 'https://docs.google.com/forms/d/e/1FAIpQLSdngu-JR4ssHfunH-ib8SW-hn6j79v7CwRi_fTt3CTeMI3meQ/viewform?usp=publish-editor';
 var LINKS_DOCUMENTACION = {
   Asistentes: FORMULARIO_POSTULACION,
@@ -186,11 +187,11 @@ document.querySelectorAll('.rol').forEach(function(b){
 
 /* ===== SERVICIOS (Imagen y descripción debajo de cada servicio al tocar) ===== */
 var SERVICIOS = [
-  ['Servicio médico', 'Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia. Vos descansás sabiendo que alguien te cuida cada día.', 'servicio-medico.jpg'],
-  ['Enfermería las 24 hs', 'De día, de noche y los fines de semana, siempre hay alguien cuidando. Dan la medicación en hora, controlan cómo está cada persona y están a un paso si hace falta.', 'enfermeria.jpg'],
-  ['Nutricionista', 'Comer bien también es cuidarse. Las comidas se piensan para cada persona: lo que necesita, lo que puede comer y lo que le gusta. Que la mesa sea salud y también un placer.', 'nutricion.jpg'],
-  ['Terapista ocupacional', 'Ayuda a seguir haciendo lo que cada uno disfruta: vestirse solo, cocinar, escribir, moverse. Con juegos y ejercicios suaves entrena la memoria y la independencia, para que cada día sea más cómodo.', 'terapia.jpg'],
-  ['Actividades recreativas', 'Acá ningún día es igual: música, juegos, charlas y festejos. Porque la compañía, las risas y tener algo lindo para esperar también son parte del cuidado.', 'actividades.jpg']
+  ['Servicio médico', 'Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia. Vos descansás sabiendo que alguien te cuida cada día.', 'servicio-1.jpg'],
+  ['Enfermería las 24 hs', 'De día, de noche y los fines de semana, siempre hay alguien cuidando. Dan la medicación en hora, controlan cómo está cada persona y están a un paso si hace falta.', 'servicio-2.jpg'],
+  ['Nutricionista', 'Comer bien también es cuidarse. Las comidas se piensan para cada persona: lo que necesita, lo que puede comer y lo que le gusta. Que la mesa sea salud y también un placer.', 'servicio-3.jpg'],
+  ['Terapista ocupacional', 'Ayuda a seguir haciendo lo que cada uno disfruta: vestirse solo, cocinar, escribir, moverse. Con juegos y ejercicios suaves entrena la memoria y la independencia, para que cada día sea más cómodo.', 'servicio-4.jpg'],
+  ['Actividades recreativas', 'Acá ningún día es igual: música, juegos, charlas y festejos. Porque la compañía, las risas y tener algo lindo para esperar también son parte del cuidado.', 'servicio-5.jpg']
 ];
 
 (function(){
