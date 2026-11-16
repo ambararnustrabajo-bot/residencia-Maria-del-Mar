@@ -19,7 +19,7 @@
       {n:'Primer piso', d:'Ambientes tranquilos y con mucha luz natural.', f:[['primerpiso-1.jpg','Primer piso']]}
     ],
     acti:[
-      {n:'Actividades', d:'Momentos para compartir, divertirse y sentirse acompañado.', f:[['actividad-1.jpg','Pintura'],['actividad-2.jpg','Clases de gimnasia'],['actividad-3.jpg','Lúdicas'],['actividad-4.jpg','Talleres'],['actividad-5.jpg','Fiestas']]}
+      {n:'Actividades', d:'Momentos para compartir, divertirse y sentirse acompañado.', f:[['actividad-1.jpg','Pintura'],['actividad-2.jpg','Clases de gimnasia'],['actividad-3.jpg','Lúdicas'],['actividad-4.jpg','Talleres']]}
     ]
   };
   var ROLES={Asistentes:'asistentes',Profesionales:'profesionales',Auxiliares:'auxiliares'};
@@ -103,17 +103,17 @@
       document.querySelectorAll('.rol').forEach(function(o){o.setAttribute('aria-expanded','false')});
       if(abierto){panel.classList.remove('on'); return;}
       b.setAttribute('aria-expanded','true');
-      panel.innerHTML='<p>Postulación para <b>'+r+'</b>. En el formulario, indicá este puesto y adjuntá tu CV junto con la documentación solicitada.</p><a class="btn" href="'+LINKS_DOCUMENTACION[r]+'" target="_blank" rel="noopener">Aplicar</a>';
+      panel.innerHTML='<p>Postulación para <b>'+r+'</b>. En el formulario, indicá este puesto y adjuntá tu CV junto con la documentación solicitada.</p><a class="btn" href="'+LINKS_DOCUMENTACION[r]+'" target="_blank" rel="noopener">Ir al formulario</a>';
       panel.classList.add('on');
     };
   });
   
   var SERVICIOS=[
-    ['Servicio médico','Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia. Vos descansás sabiendo que alguien está atento.', 'servicio-1.jpg'],
-    ['Enfermería las 24 hs','De día, de noche y los fines de semana, siempre hay alguien cuidando. Dan la medicación en hora, controlan cómo está cada persona y están a un paso si hace falta ayuda.', 'servicio-2.jpg'],
-    ['Nutricionista','Comer bien también es cuidarse. Las comidas se piensan para cada persona: lo que necesita, lo que puede comer y lo que le gusta. Que la mesa sea salud y también un placer.', 'servicio-3.jpg'],
-    ['Terapista ocupacional','Ayuda a seguir haciendo lo que cada uno disfruta: vestirse solo, cocinar, escribir, moverse. Con juegos y ejercicios suaves entrena la memoria y la independencia, para sentirse capaz cada día.', 'servicio-4.jpg'],
-    ['Actividades recreativas','Acá ningún día es igual: música, juegos, charlas y festejos. Porque la compañía, las risas y tener algo lindo para esperar también son parte del cuidado.', 'servicio-5.jpg']
+    ['Servicio médico','Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia. Vos descansás sabiendo que alguien te cuida cada día.','img/servicio-medico.jpg'],
+    ['Enfermería las 24 hs','De día, de noche y los fines de semana, siempre hay alguien cuidando. Dan la medicación en hora, controlan cómo está cada persona y están a un paso si hace falta.','img/enfermeria.jpg'],
+    ['Nutricionista','Comer bien también es cuidarse. Las comidas se piensan para cada persona: lo que necesita, lo que puede comer y lo que le gusta. Que la mesa sea salud y también un placer.','img/nutricion.jpg'],
+    ['Terapista ocupacional','Ayuda a seguir haciendo lo que cada uno disfruta: vestirse solo, cocinar, escribir, moverse. Con juegos y ejercicios suaves entrena la memoria y la independencia, para que cada día sea más cómodo.','img/terapia.jpg'],
+    ['Actividades recreativas','Acá ningún día es igual: música, juegos, charlas y festejos. Porque la compañía, las risas y tener algo lindo para esperar también son parte del cuidado.','img/actividades.jpg']
   ];
   
   (function(){
@@ -148,6 +148,8 @@
   (function(){
     var top=document.getElementById('top'), menu=document.getElementById('menu'), bur=document.querySelector('.burger'), dd=document.querySelector('.dd');
     var menuTriggers=[bur], ultimoDisparador=bur;
+    var bloques=document.querySelectorAll('main section.bloque');
+    function esMovil(){return matchMedia('(max-width: 760px)').matches;}
     function sol(){top.classList.toggle('sol',scrollY>40)}
     addEventListener('scroll',sol,{passive:true}); sol();
     
@@ -155,20 +157,49 @@
       menuTriggers.forEach(function(disparador){disparador.setAttribute('aria-expanded',abierto)});
     }
     function cerrarMenu(devolverFoco){
-      menu.classList.remove('abierto');
+      if(menu) menu.classList.remove('abierto');
       actualizarDisparadores(false,null);
-      bur.setAttribute('aria-label','Abrir menú');
-      bur.textContent='☰';
+      if(bur){
+        bur.setAttribute('aria-label','Abrir menú');
+        bur.textContent='☰';
+      }
       document.body.classList.remove('menu-abierto');
       if(devolverFoco&&ultimoDisparador)ultimoDisparador.focus();
     }
     function abrirMenu(disparador){
       ultimoDisparador=disparador;
-      menu.classList.add('abierto');
+      if(menu) menu.classList.add('abierto');
       actualizarDisparadores(true);
-      bur.setAttribute('aria-label','Cerrar menú');
-      bur.textContent='×';
+      if(bur){
+        bur.setAttribute('aria-label','Cerrar menú');
+        bur.textContent='×';
+      }
       document.body.classList.add('menu-abierto');
+    }
+    function activarSeccionMovil(id){
+      var sec=id?document.getElementById(id):null;
+      if(!sec || !esMovil()) return;
+      document.body.classList.add('recorrido-movil');
+      document.body.classList.add('seccion-movil-activa');
+      bloques.forEach(function(s){s.classList.toggle('seccion-activa', s===sec)});
+      sec.scrollIntoView({behavior:'auto', block:'start'});
+      cerrarMenu(false);
+    }
+    function actualizarModoMovil(){
+      if(!esMovil()){
+        document.body.classList.remove('recorrido-movil');
+        document.body.classList.remove('seccion-movil-activa');
+        bloques.forEach(function(s){s.classList.remove('seccion-activa');});
+        return;
+      }
+      if(window.location.hash && window.location.hash !== '#inicio'){
+        var sec=document.querySelector(window.location.hash);
+        if(sec && sec.classList.contains('bloque')){
+          document.body.classList.add('recorrido-movil');
+          document.body.classList.add('seccion-movil-activa');
+          bloques.forEach(function(s){s.classList.toggle('seccion-activa', s===sec)});
+        }
+      }
     }
     if(bur) bur.onclick=function(){if(menu.classList.contains('abierto'))cerrarMenu(true);else abrirMenu(bur)};
     
@@ -189,10 +220,22 @@
       dd.querySelector('button').onclick=function(e){e.stopPropagation();var a=dd.classList.toggle('abierto');this.setAttribute('aria-expanded',a)};
       document.addEventListener('click',function(){dd.classList.remove('abierto')});
     }
-    if(menu) menu.addEventListener('click',function(e){if(e.target.closest('a'))cerrarMenu(false)});
+    if(menu) menu.addEventListener('click',function(e){
+      var link=e.target.closest('a');
+      if(!link) return;
+      var href=link.getAttribute('href');
+      if(!href || href.length<=1) return;
+      if(esMovil()){
+        e.preventDefault();
+        activarSeccionMovil(href.slice(1));
+        if(window.location.hash !== href) window.location.hash = href;
+      } else {
+        cerrarMenu(false);
+      }
+    });
     
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&menu.classList.contains('abierto'))cerrarMenu(true)});
-    addEventListener('resize',function(){if(innerWidth>1020)cerrarMenu()});
+    addEventListener('resize',function(){if(innerWidth>1020)cerrarMenu(); actualizarModoMovil();});
     
     var links=[].slice.call(menu.querySelectorAll('a[href^="#"]'));
     var secs=links.map(function(a){var href=a.getAttribute('href');return href&&href.length>1?document.querySelector(href):null;});
@@ -206,6 +249,7 @@
     addEventListener('scroll',marcarSeccionActiva,{passive:true});
     addEventListener('pageshow',marcarSeccionActiva);
     marcarSeccionActiva();
+    actualizarModoMovil();
     
     var v=document.querySelector('.bgvideo');
     if(v&&matchMedia('(prefers-reduced-motion: reduce)').matches) v.pause();
