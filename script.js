@@ -24,6 +24,7 @@ var GALERIAS = {
   ]
 };
 
+//poner el doc formulario
 var FORMULARIO_POSTULACION = 'https://docs.google.com/forms/d/e/1FAIpQLSdngu-JR4ssHfunH-ib8SW-hn6j79v7CwRi_fTt3CTeMI3meQ/viewform?usp=publish-editor';
 var LINKS_DOCUMENTACION = {
   Asistentes: FORMULARIO_POSTULACION,
