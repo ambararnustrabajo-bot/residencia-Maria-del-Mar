@@ -328,21 +328,30 @@ footer a:hover{color:var(--sea)}
   }
 }
  
-/* ===== SEDE DOLORES: VIDEO, FOTO Y MAPA NÍTIDO ===== */
+/* ===== SEDE DOLORES: DISEÑO COMPACTO, ELEGANTE Y EN LOOP ===== */
+.pronto {
+  padding-bottom: clamp(4.5rem, 9vw, 8rem);
+}
+
+.dolores-showcase {
+  max-width: 980px;
+  margin: 2rem auto 1.5rem;
+}
+
 .dolores-media {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-  gap: 1.2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 1.25rem;
 }
 
 .media-card {
   position: relative;
   aspect-ratio: 16/10;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
   background: var(--navy);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(184, 228, 255, 0.18);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
 }
 
 .media-card video,
@@ -350,12 +359,37 @@ footer a:hover{color:var(--sea)}
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
+  transition: transform 0.5s ease;
 }
 
-/* Quita el desenfoque y habilita el zoom/movimiento en el mapa de Dolores */
+.media-card:hover img {
+  transform: scale(1.03);
+}
+
+.mapa-dolores {
+  margin-top: 1.25rem;
+  height: 260px;
+  border-radius: 18px;
+  border: 1px solid rgba(184, 228, 255, 0.18);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
 .mapa-dolores iframe {
   filter: none;
   transform: none;
   pointer-events: auto;
+}
+
+@media (max-width: 760px) {
+  .dolores-showcase {
+    margin: 1.5rem auto 1rem;
+  }
+  .media-card {
+    aspect-ratio: 16/10;
+  }
+  .mapa-dolores {
+    height: 220px;
+  }
 }
