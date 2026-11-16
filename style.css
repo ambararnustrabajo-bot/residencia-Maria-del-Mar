@@ -262,4 +262,69 @@ footer a:hover{color:var(--sea)}
 .lb-a,.lb-s{top:50%;translate:0 -50%}
 .lb-a{left:1.2rem}.lb-s{right:1.2rem}
 .lb.uno .lb-a,.lb.uno .lb-s{display:none}
+/* ===== AJUSTES DE VELOCIDAD, SERVICIOS, POSTULACIONES Y BOTÓN INFERIOR ===== */
+
+/* 1. Transición más rápida en las fotos de Habitaciones y Actividades */
+.foto {
+  transition: opacity .15s ease, transform .25s ease;
+}
+
+/* 2. Servicios: imagen + descripción desplegable justo debajo de cada botón */
+.sv-body {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height .35s ease, opacity .25s ease;
+}
+.sv.on .sv-body {
+  max-height: 36rem;
+  opacity: 1;
+  margin-top: .75rem;
+}
+.sv.on span {
+  max-height: none;
+  opacity: 1;
+  margin-top: .5rem;
+}
+.sv-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: .4rem;
+}
+
+/* En computadora mantiene el visor grande a la derecha; en celular muestra la imagen debajo de cada servicio */
+@media (min-width: 801px) {
+  .sv-img { display: none; }
+}
+@media (max-width: 800px) {
+  .escena { display: none; }
+}
+
+/* 3. Trabajá con nosotros: botón "Postularme" debajo de cada tarjeta elegida */
+.rol-detalle {
+  display: none;
+  grid-column: 1 / -1;
+  padding: 1.3rem 1.5rem;
+  border-radius: 16px;
+  background: var(--navy2);
+  border: 1px solid rgba(79,195,247,.35);
+}
+.rol-detalle.on {
+  display: block;
+}
+
+/* 4. Botón "Explorar otra sección" visible abajo en móvil */
+@media (max-width: 760px) {
+  body.recorrido-movil.seccion-movil-activa main section.bloque.seccion-activa {
+    padding-bottom: 5.5rem;
+  }
+  body.recorrido-movil.seccion-movil-activa .volver-menu {
+    display: flex;
+    width: fit-content;
+    margin: 2.2rem auto 1rem;
+  }
+}
  
