@@ -188,8 +188,8 @@ document.querySelectorAll('.rol').forEach(function(b){
 var SERVICIOS = [
   ['Servicio médico', 'Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia.', 'servicio-1.jpg'],
   ['Enfermería las 24 hs', 'Presencia permanente de enfermeras, que controlan y atienden a los residentes; otorgando los cuidados que cada uno requiere', 'servicio-2.jpg'],
-  ['Nutricionista', 'La equilibrada y buena alimentación también es parte de la salud. Las menúes se elaboran de acuerdo a la necesidad de cada residente; brindando variedad y calidad. ', 'servicio-3.jpg'],
-  ['Terapista ocupacional', ' Colabora a mantener la independencia de cada residente: vestirse o desplazarse solo, escribir. A través de actividades lúdicas  y ejercitación leve, entrenan la memoria y la autonomía, para que cada día se sientan mejor.', 'servicio-4.jpg'],
+  ['Nutricionista', 'La equilibrada y buena alimentación también es parte de la salud. Menues variados respetando las indicaciones medicas brindando calidad. ', 'servicio-3.jpg'],
+  ['Terapista ocupacional', ' Colabora a mantener la autonomia de cada residente, mediante la  estimulacion cognitiva, practica de  actividades lúdicas y  ejercitación leve, para llevar una buena calidad de vida.', 'servicio-4.jpg'],
   ['Actividades recreativas', 'Acá ningún día es igual: música, juegos, charlas y festejos. Porque la compañía, las risas y tener algo lindo para compartir también son parte del cuidado.', 'servicio-5.jpg']
 ];
 
