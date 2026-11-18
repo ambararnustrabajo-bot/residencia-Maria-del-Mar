@@ -30,7 +30,7 @@ var LINKS_DOCUMENTACION = {
   Asistentes: FORMULARIO_POSTULACION,
   Profesionales: FORMULARIO_POSTULACION,
   Auxiliares: FORMULARIO_POSTULACION,
-  Enfermero: FORMULARIO_POSTULACION 
+  Enfermero: FORMULARIO_POSTULACION, 
 };
 
 let indiceActual = 0;
