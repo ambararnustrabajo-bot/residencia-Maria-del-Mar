@@ -33,44 +33,62 @@ var LINKS_DOCUMENTACION = {
   Enfermero: FORMULARIO_POSTULACION 
 };
 
-document.querySelectorAll('[data-galeria]').forEach(function(root){
-  var galKey = root.dataset.galeria;
-  var G = GALERIAS[galKey];
-  if (!G) return;
+let indiceActual = 0;
+let intervaloCarrusel;
 
-  var g = 0, i = 0, x0 = null, arr = false;
-  var cambioTimer = null, autoTimer = null;
-  var grad = 'linear-gradient(135deg,#8fd3fb,#2c5a78)';
-  var quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function iniciarCarrusel() {
+  clearInterval(intervaloCarrusel);
+  intervaloCarrusel = setInterval(() => {
+    cambiarFoto(1);
+  }, 9000); // 9000 ms = 9 segundos por foto
+}
 
-  root.innerHTML = '<div class="chips"></div><p class="gdesc"></p><div class="visor" tabindex="0"><span class="amp">⤢ Ampliar</span><div class="foto"></div><p class="pie"></p><button class="fl ant" aria-label="Anterior">‹</button><button class="fl sig" aria-label="Siguiente">›</button><div class="pts"></div></div><button class="volver-categorias" type="button" aria-label="Volver a categorías"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Volver a las categorías</button>';
+function cambiarFoto(direccion) {
+  const slides = document.querySelectorAll('#galeria-mdp .slide');
+  if (slides.length === 0) return;
 
-  var chips = root.querySelector('.chips');
-  var gd = root.querySelector('.gdesc');
-  var foto = root.querySelector('.foto');
-  var pie = root.querySelector('.pie');
-  var pts = root.querySelector('.pts');
-  var visor = root.querySelector('.visor');
-  var volver = root.querySelector('.volver-categorias');
-  var elegirCategoria = (galKey === 'hab');
+  slides[indiceActual].classList.remove('activa');
+  indiceActual = (indiceActual + direccion + slides.length) % slides.length;
+  slides[indiceActual].classList.add('activa');
 
-  if (elegirCategoria) root.classList.add('sin-seleccion');
-  if (G.length < 2) chips.style.display = 'none';
+  // Actualiza el texto "1 / X"
+  const contador = document.getElementById('contador-fotos');
+  if (contador) {
+    contador.textContent = `${indiceActual + 1} / ${slides.length}`;
+  }
 
-  G.forEach(function(gr, k){
-    var b = document.createElement('button');
-    b.className = 'chip';
-    b.textContent = gr.n;
-    b.setAttribute('aria-pressed', 'false');
-    b.onclick = function(){
-      g = k; i = 0;
-      root.classList.remove('sin-seleccion');
-      if (elegirCategoria) root.classList.add('categoria-elegida');
-      ver();
-      iniciarAuto();
-    };
-    chips.appendChild(b);
-  });
+  // Reinicia los 9 segundos si el usuario tocó la flecha manualmente
+  iniciarCarrusel();
+}
+
+function mostrarSede(sede, boton) {
+  // Cambiar estilo del botón activo
+  document.querySelectorAll('.btn-sede').forEach(btn => btn.classList.remove('activo'));
+  boton.classList.add('activo');
+
+  const divMdp = document.getElementById('galeria-mdp');
+  const divDolores = document.getElementById('galeria-dolores');
+
+  if (sede === 'mdp') {
+    divMdp.style.display = 'block';
+    divDolores.style.display = 'none';
+    iniciarCarrusel();
+  } else {
+    divMdp.style.display = 'none';
+    divDolores.style.display = 'block';
+    clearInterval(intervaloCarrusel); // Pausa el carrusel mientras miran Dolores
+  }
+}
+
+// Arranca automáticamente al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+  const slides = document.querySelectorAll('#galeria-mdp .slide');
+  const contador = document.getElementById('contador-fotos');
+  if (contador && slides.length > 0) {
+    contador.textContent = `1 / ${slides.length}`;
+  }
+  iniciarCarrusel();
+});
 
   function ver(){
     var fs = G[g].f;
