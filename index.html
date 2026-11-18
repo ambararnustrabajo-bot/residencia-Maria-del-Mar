@@ -1,240 +1,258 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Residencia María del Mar | Mar del Plata y Dolores</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="google-site-verification" content="tPLew_A0WDXLUgzxshwzBoqn_IQ6NpZ5q16tdxIzPLU" />
+<title>María del Mar · Residencia para adultos mayores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
-  <!-- NAVEGACIÓN -->
-  <header class="navbar">
-    <div class="container nav-container">
-      <a href="#inicio" class="logo">
-        <span class="logo-title">MARÍA DEL MAR</span>
-        <span class="logo-sub">Residencia para Adultos Mayores</span>
-      </a>
+<div class="top" id="top">
+  <a class="logo" href="#inicio"><img src="logo-blanco.png" alt="María del Mar"></a>
+  <button class="burger" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  <nav class="menu" id="menu">
+    <div class="menu-head" aria-hidden="true">¿Qué querés conocer?</div>
+    <a href="#quienes">Quiénes somos</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#sedes">Conocé Nuestros Hogares</a>
+    <a href="#actividades">Actividades</a>
+    <div class="dd"><button aria-haspopup="true" aria-expanded="false">Sedes ▾</button>
+      <div class="sub"><a href="#contacto">Mar del Plata</a><a href="#pronto">Dolores · Próximamente</a></div></div>
+    <a class="mobile-menu-link" href="#ubicacion">Cómo encontrarnos</a>
+    <a class="mobile-menu-link" href="#pronto">Dolores · Próximamente</a>
+    <a href="#trabaja">Trabajá con nosotros</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</div>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
-        <span></span>
-        <span></span>
-        <span></span>
+<header class="hero" id="inicio">
+  <video class="bgvideo" autoplay muted loop playsinline><source src="hogar.mp4" type="video/mp4"></video>
+  <div class="velo"></div>
+  <div class="in">
+    <p class="marca rise d1">RESIDENCIA PARA ADULTOS MAYORES · MAR DEL PLATA</p>
+    <h1 class="rise d2">María del Mar</h1>
+    <p class="anios rise d3"><b id="n">15</b> años de trayectoria</p>
+    <p class="lema rise d4">Un lugar cálido donde cuidamos a quienes más amás.</p>
+    <a class="btn rise d4" href="#quienes">Conocé nuestro hogar</a>
+  </div>
+  <div class="olas" aria-hidden="true">
+    <svg class="o1" viewBox="0 0 2880 150" preserveAspectRatio="none"><path d="M0 70C240 130 480 10 720 70S1200 130 1440 70 1920 10 2160 70 2640 130 2880 70V150H0Z"/></svg>
+    <svg class="o2" viewBox="0 0 2880 150" preserveAspectRatio="none"><path d="M0 90C240 30 480 140 720 90S1200 30 1440 90 1920 140 2160 90 2640 30 2880 90V150H0Z"/></svg>
+    <svg class="o3" viewBox="0 0 2880 150" preserveAspectRatio="none"><path d="M0 115C240 85 480 145 720 115S1200 85 1440 115 1920 145 2160 115 2640 85 2880 115V150H0Z"/></svg>
+  </div>
+</header>
+
+<main>
+  <section class="bloque qs" id="quienes">
+    <div class="wrap">
+      <h2>Quiénes somos</h2>
+      <div class="textos">
+        <p>En nuestra residencia acompañamos a las familias de Mar del Plata desde hace años, brindando cuidado responsable, respeto y contención diaria. Somos un espacio cálido, con personal comprometido y atención permanente, donde cada residente es tratado con dignidad y afecto.</p>
+        <p>Nuestra trayectoria se construyó con confianza, compromiso y vocación, priorizando siempre el bienestar, la tranquilidad y la seguridad de quienes nos eligen, desde nuestra querida ciudad costera de tradición familiar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque ubicacion" id="ubicacion">
+    <div class="wrap">
+      <h2>Cómo encontrarnos</h2>
+      <p class="sub2">Martín Miguel de Güemes 2574 · Mar del Plata, Buenos Aires</p>
+      <div class="mapa mapa-mdp">
+        <iframe title="Ubicación de María del Mar en Mar del Plata" loading="lazy" src="https://www.google.com/maps?q=Mart%C3%ADn+Miguel+de+G%C3%BCemes+2574,+Mar+del+Plata,+Buenos+Aires&output=embed" allowfullscreen></iframe>
+      </div>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Mart%C3%ADn+Miguel+de+G%C3%BCemes+2574,+Mar+del+Plata,+Buenos+Aires" target="_blank" rel="noopener">Abrir en Google Maps</a>
+    </div>
+  </section>
+
+  <section class="bloque serv" id="servicios">
+    <div class="wrap">
+      <h2>Servicios</h2>
+      <p class="sub2">Atención integral, pensada para el bienestar y la tranquilidad de cada residente.</p>
+      <div class="serv-g">
+        <div class="lista-s"></div>
+        <div class="escena" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sedes" class="seccion-galeria">
+    <h2>Conocé Nuestros Hogares</h2>
+    <div class="botones-sedes">
+      <button class="btn-sede activo" onclick="mostrarSede('mdp', this)">
+        RESIDENCIA MAR DEL PLATA
       </button>
-
-      <nav class="nav-links" id="navLinks">
-        <a href="#quienes-somos">Quiénes somos</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#hogares">Conocé Nuestros Hogares</a>
-        <a href="#sedes">Sedes</a>
-        <a href="#trabaja">Trabajá con nosotros</a>
-        <a href="#contacto" class="btn-nav">Contacto</a>
-      </nav>
+      <button class="btn-sede" onclick="mostrarSede('dolores', this)">
+        RESIDENCIA DOLORES · Próximamente
+      </button>
     </div>
-  </header>
 
-  <!-- HERO / INICIO -->
-  <section id="inicio" class="hero">
-    <div class="container hero-content">
-      <span class="badge-hero">Calidez humana y cuidado profesional</span>
-      <h1>Un hogar pensado para disfrutar cada etapa con tranquilidad</h1>
-      <p>Acompañamiento integral, atención médica permanente y espacios diseñados para el bienestar de cada residente en Mar del Plata y Dolores.</p>
-      <div class="hero-buttons">
-        <a href="#hogares" class="btn-primary">Conocé nuestros hogares</a>
-        <a href="#sedes" class="btn-secondary">Ver sedes</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- QUIÉNES SOMOS -->
-  <section id="quienes-somos" class="section">
-    <div class="container about-grid">
-      <div class="about-text">
-        <span class="section-tag">Nuestra esencia</span>
-        <h2>Más que una residencia, una familia que acompaña</h2>
-        <p>En <strong>Residencia María del Mar</strong> trabajamos cada día para brindar un entorno seguro, afectuoso y estimulante. Combinamos un equipo interdisciplinario de salud con el calor de un verdadero hogar.</p>
-        <div class="stats-row">
-          <div class="stat-item">
-            <strong>24 hs</strong>
-            <span>Enfermería y cuidado</span>
-          </div>
-          <div class="stat-item">
-            <strong>2 Sedes</strong>
-            <span>Mar del Plata y Dolores</span>
-          </div>
+    <div id="galeria-mdp" class="contenedor-sede">
+      <div class="carrusel-wrapper">
+        <button class="flecha prev" onclick="cambiarFoto(-1)">&#10094;</button>
+        
+        <div class="slides">
+          <img src="entrada-1.jpg" class="slide activa" alt="Entrada Residencia Mar del Plata">
+          <img src="entrada-2.jpg" class="slide" alt="Entrada Residencia Mar del Plata">
+          <img src="entrada-3.jpg" class="slide" alt="Entrada Residencia Mar del Plata">
+          <img src="entrada-4.jpg" class="slide" alt="Entrada Residencia Mar del Plata">
+          <img src="habitacion-1.jpg" class="slide" alt="Habitación Residencia Mar del Plata">
+          <img src="habitacion-2.jpg" class="slide" alt="Habitación Residencia Mar del Plata">
+          <img src="habitacion-4.jpg" class="slide" alt="Habitación Residencia Mar del Plata">
+          <img src="habitacion-5.jpg" class="slide" alt="Habitación Residencia Mar del Plata">
+          <img src="habitacion-6.jpg" class="slide" alt="Habitación Residencia Mar del Plata">
+          <img src="habitacion-7.jpg" class="slide" alt="Habitación Residencia Mar del Plata">
+          <img src="habitacion-8.jpg" class="slide" alt="Habitación Residencia Mar del Plata">
+          <img src="habitacion-9.jpg" class="slide" alt="Habitación Residencia Mar del Plata">
+          <img src="comedor-1.jpg" class="slide" alt="Comedor Residencia Mar del Plata">
+          <img src="comedor-2.jpg" class="slide" alt="Comedor Residencia Mar del Plata">
+          <img src="cocina-1.jpg" class="slide" alt="Cocina Residencia Mar del Plata">
+          <img src="cocina-2.jpg" class="slide" alt="Cocina Residencia Mar del Plata">
+          <img src="patio-1.jpg" class="slide" alt="Patio Residencia Mar del Plata">
+          <img src="patio-2.jpg" class="slide" alt="Patio Residencia Mar del Plata">
+          <img src="primerpiso-1.jpg" class="slide" alt="Primer Piso Residencia Mar del Plata">
+          <img src="primerpiso-2.jpg" class="slide" alt="Primer Piso Residencia Mar del Plata">
         </div>
+
+        <button class="flecha next" onclick="cambiarFoto(1)">&#10095;</button>
       </div>
-      <div class="about-card">
-        <h3>Nuestro compromiso</h3>
-        <ul>
-          <li>Atención personalizada según las necesidades de cada residente.</li>
-          <li>Comunicación fluida y cercana con las familias.</li>
-          <li>Actividades recreativas, cognitivas y sociales diarias.</li>
-          <li>Nutrición supervisada y menús caseros equilibrados.</li>
-        </ul>
+      
+      <p id="contador-fotos" class="contador">1 / 20</p>
+    </div>
+
+    <div id="galeria-dolores" class="contenedor-sede" style="display: none;">
+      <div class="tarjeta-proximamente">
+        <span class="etiqueta-nueva">NUEVA SEDE</span>
+        <h3>Residencia María del Mar · Dolores</h3>
+        <p>Estamos preparando un nuevo espacio con la misma calidez, atención personalizada y confort de siempre.</p>
+        <p><strong>¡Muy pronto vas a poder conocer las instalaciones!</strong></p>
+        <a href="https://wa.me/5492235644493?text=Hola!%20Quisiera%20recibir%20informaci%C3%B3n%20sobre%20la%20nueva%20sede%20en%20Dolores" target="_blank" rel="noopener" class="btn-consultar">
+          Consultar por lista de espera
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- SERVICIOS -->
-  <section id="servicios" class="section section-dark">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Cuidado integral</span>
-        <h2>Nuestros Servicios</h2>
-        <p>Atención integral, pensada para el bienestar y la tranquilidad de cada residente.</p>
-      </div>
-
-      <div class="services-layout">
-        <div class="services-list" id="servicesList">
-          <button class="service-tab active" data-img="img/servicio-medico.jpg" data-title="Servicio médico" data-desc="Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia.">
-            <h3>Servicio médico</h3>
-            <p>Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia.</p>
-          </button>
-
-          <button class="service-tab" data-img="img/enfermeria.jpg" data-title="Enfermería las 24 hs" data-desc="Personal de enfermería capacitado disponible las 24 horas para administración de medicación, control de signos vitales y asistencia inmediata.">
-            <h3>Enfermería las 24 hs</h3>
-            <p>Asistencia continua, control de medicación y seguimiento permanente durante todo el día y la noche.</p>
-          </button>
-
-          <button class="service-tab" data-img="img/nutricionista.jpg" data-title="Nutricionista" data-desc="Planes alimentarios elaborados por profesionales, adaptados a cada patología y preferencia, con comida casera fresca y nutritiva.">
-            <h3>Nutricionista</h3>
-            <p>Menús equilibrados, saludables y adaptados a las necesidades nutricionales de cada persona.</p>
-          </button>
-
-          <button class="service-tab" data-img="img/terapista.jpg" data-title="Terapista ocupacional" data-desc="Talleres de estimulación cognitiva, motricidad y autonomía para mantener activas las capacidades físicas y mentales.">
-            <h3>Terapista ocupacional</h3>
-            <p>Estimulación cognitiva y física para promover la autonomía y el bienestar emocional.</p>
-          </button>
-
-          <button class="service-tab" data-img="img/recreacion.jpg" data-title="Actividades recreativas" data-desc="Música, lectura, juegos grupales, celebraciones y espacios al aire libre que fomentan la alegría y el vínculo social.">
-            <h3>Actividades recreativas</h3>
-            <p>Propuestas lúdicas, culturales y sociales para disfrutar y compartir en grupo.</p>
-          </button>
-        </div>
-
-        <div class="service-preview">
-          <div class="service-img-wrapper">
-            <img id="serviceImage" src="img/servicio-medico.jpg" alt="Servicio médico" />
-          </div>
-          <div class="service-caption">
-            <h4 id="serviceCaptionTitle">Servicio médico</h4>
-            <p id="serviceCaptionDesc">Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia.</p>
-          </div>
-        </div>
-      </div>
+  <section class="bloque acti" id="actividades">
+    <div class="wrap">
+      <h2>Actividades</h2>
+      <div data-galeria="acti"></div>
     </div>
   </section>
 
-  <!-- CONOCÉ NUESTROS HOGARES -->
-  <section id="hogares" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Nuestras instalaciones</span>
-        <h2>Conocé Nuestros Hogares</h2>
-        <p>Espacios luminosos, seguros y confortables diseñados para sentirse como en casa.</p>
+  <section class="bloque trabaja" id="trabaja">
+    <div class="wrap">
+      <h2>Trabajá con nosotros</h2>
+      <p class="sub2">Te invitamos a enviar tu currículum para formar parte de nuestra residencia. Cada postulación será evaluada a la brevedad. Buscamos compromiso, vocación y responsabilidad en un equipo humano profesional.</p>
+      <div class="roles">
+        <button class="rol" aria-expanded="false" data-rol="Asistentes">
+          <span class="rol-foto"><img src="puesto-asistentes.jpg" alt="Imagen para el puesto de asistentes" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="rol-foto-placeholder" hidden>Agregá una imagen para Asistentes</span></span>
+          <span class="rol-copy"><strong>Asistentes</strong><span>Elegí tu puesto</span></span>
+        </button>
+        <button class="rol" aria-expanded="false" data-rol="Profesionales">
+          <span class="rol-foto"><img src="puesto-profesionales.jpg" alt="Imagen para el puesto de profesionales" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="rol-foto-placeholder" hidden>Agregá una imagen para Profesionales</span></span>
+          <span class="rol-copy"><strong>Profesionales</strong><span>Elegí tu puesto</span></span>
+        </button>
+        <button class="rol" aria-expanded="false" data-rol="Auxiliares">
+          <span class="rol-foto"><img src="puesto-auxiliares.jpg" alt="Imagen para el puesto de auxiliares" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="rol-foto-placeholder" hidden>Agregá una imagen para Auxiliares</span></span>
+          <span class="rol-copy"><strong>Auxiliares</strong><span>Elegí tu puesto</span></span>
+        </button>
+        <button class="rol" aria-expanded="false" data-rol="Enfermero">
+          <span class="rol-foto"><img src="puesto-enfermero.jpg" alt="Imagen para el puesto de enfermero" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="rol-foto-placeholder" hidden>Agregá una imagen para Enfermero/a</span></span>
+          <span class="rol-copy"><strong>Enfermero/a</strong><span>Elegí tu puesto</span></span>
+        </button>
       </div>
-
-      <div class="gallery-tabs">
-        <button class="g-tab active" data-sede="mdp">Sede Mar del Plata</button>
-        <button class="g-tab" data-sede="dolores">Sede Dolores (Próximamente)</button>
-      </div>
-
-      <div class="gallery-showcase" id="galleryShowcase">
-        <div class="gallery-main-frame">
-          <img id="galleryMainImg" src="img/living.jpg" alt="Espacios de la residencia" />
-          <div class="gallery-overlay">
-            <span class="gallery-badge" id="galleryBadge">Sede Mar del Plata</span>
-            <h3 id="galleryTitle">Living Principal</h3>
-            <p id="galleryDesc">Amplio espacio común luminoso y calefaccionado para compartir momentos en familia.</p>
-          </div>
-
-          <button class="gallery-arrow prev" id="prevSlide" aria-label="Foto anterior">&#10094;</button>
-          <button class="gallery-arrow next" id="nextSlide" aria-label="Foto siguiente">&#10095;</button>
-        </div>
-
-        <div class="gallery-progress">
-          <div class="gallery-progress-bar" id="galleryProgressBar"></div>
-        </div>
-
-        <div class="gallery-thumbs" id="galleryThumbs"></div>
-      </div>
+      <div class="panel" id="panel" aria-live="polite"></div>
+      <p class="aviso"><b>Importante</b>Solo se evaluarán los CV acompañados por la documentación solicitada según cada puesto. Las postulaciones que no presenten esta información de manera completa y legítima no podrán ser tenidas en cuenta. Agradecemos la comprensión y el interés en formar parte del equipo.</p>
     </div>
   </section>
 
-  <!-- SEDES Y FORMULARIO DOLORES -->
-  <section id="sedes" class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Dónde estamos</span>
-        <h2>Nuestras Sedes</h2>
-      </div>
+  <section class="bloque pronto" id="pronto">
+    <div class="wrap">
+      <h2>Sede Dolores · Próximamente</h2>
+      <p class="sub">Muy pronto abriremos nuestras puertas en la ciudad de Dolores brindando el mismo cuidado, calidez y atención de siempre.</p>
+      <p class="lugar">Ruta 2 Km 211 · Dolores, Buenos Aires</p>
 
-      <div class="sedes-grid">
-        <div class="sede-card">
-          <span class="sede-status active">Abierta · Inscripciones disponibles</span>
-          <h3>Sede Mar del Plata</h3>
-          <p>Nuestra residencia en la ciudad de Mar del Plata cuenta con habitaciones confortables, jardines, atención médica integral y un equipo humano con amplia trayectoria.</p>
-          <ul class="sede-details">
-            <li><strong>Ubicación:</strong> Mar del Plata, Buenos Aires</li>
-            <li><strong>Modalidad:</strong> Estadía permanente y temporaria</li>
-          </ul>
-          <a href="#contacto" class="btn-primary">Consultar disponibilidad</a>
+      <div class="dolores-showcase">
+        <div class="dolores-media">
+          <div class="media-card">
+            <video src="video.mp4" autoplay muted loop playsinline preload="auto"></video>
+          </div>
+          <div class="media-card">
+            <img src="geria.jpeg" alt="Residencia María del Mar - Sede Dolores">
+          </div>
         </div>
 
-        <div class="sede-card highlight-card">
-          <span class="sede-status soon">Nueva Apertura · Dolores</span>
-          <h3>Sede Dolores</h3>
-          <p>Muy pronto abrimos nuestras puertas en Dolores con la misma calidad humana y profesional que nos caracteriza.</p>
-          <div class="postulacion-box">
-            <h4>¿Querés postularte para trabajar en Dolores?</h4>
-            <p>Si te querés postular, completá el formulario haciendo clic en el siguiente enlace:</p>
-            <a href="https://forms.gle/eyVSK1XR3yKEfDxi9" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-block; margin-top:8px;">
-              Completar formulario de postulación
-            </a>
-          </div>
+        <div class="mapa mapa-dolores">
+          <iframe 
+            src="https://maps.google.com/maps?q=Ruta%202%20km%20211,%20Dolores,%20Buenos%20Aires&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación Sede Dolores - Ruta 2 Km 211">
+          </iframe>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TRABAJÁ CON NOSOTROS -->
-  <section id="trabaja" class="section">
-    <div class="container cta-banner">
-      <div>
-        <h2>Trabajá con nosotros</h2>
-        <p>Buscamos personas con vocación, empatía y compromiso para sumar a nuestro equipo en Dolores y Mar del Plata.</p>
+  <section class="bloque contacto" id="contacto">
+    <div class="wrap">
+      <h2>Contactanos</h2>
+      <p class="sub2">Será un placer brindarte toda la información sobre nuestros servicios.</p>
+      <div class="cards-c">
+        <article class="card-c">
+          <img class="lg" src="logo-blanco.png" alt="" onerror="this.style.display='none'">
+          <h3>María del Mar · Mar del Plata</h3>
+          <p>Martín Miguel de Güemes 2574<br>B7601 Mar del Plata, Buenos Aires</p>
+          <p><a href="tel:+542235644493">+54 (0223) 564-4493</a><br><a href="mailto:mdmresidencia@gmail.com">mdmresidencia@gmail.com</a></p>
+          <a class="btn" href="https://wa.me/5492235644493?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20residencia%20y%20coordinar%20una%20visita.%20Muchas%20gracias" target="_blank" rel="noopener">Escribinos</a>
+        </article>
+        <article class="card-c">
+          <img class="lg" src="logo-blanco.png" alt="" onerror="this.style.display='none'">
+          <h3>María del Mar · Dolores</h3>
+          <p>Ruta 2 Km 211 · Dolores<br>Provincia de Buenos Aires</p>
+          <p>Muy pronto</p>
+          <a class="btn off" href="#pronto">Próximamente</a>
+        </article>
       </div>
-      <a href="https://forms.gle/eyVSK1XR3yKEfDxi9" target="_blank" rel="noopener noreferrer" class="btn-primary">
-        Postularme ahora
-      </a>
     </div>
   </section>
+</main>
 
-  <!-- CONTACTO -->
-  <footer id="contacto" class="footer">
-    <div class="container footer-grid">
-      <div>
-        <h3>Residencia María del Mar</h3>
-        <p>Cuidado integral, respeto y calidez humana para adultos mayores.</p>
-      </div>
-      <div>
-        <h4>Contacto directo</h4>
-        <p>Escribinos por WhatsApp o redes sociales para coordinar una visita personalizada.</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Residencia María del Mar. Todos los derechos reservados.</p>
-    </div>
-  </footer>
+<footer>
+  <div class="pie-g">
+    <div><img class="lg-f" src="logo-blanco.png" alt="María del Mar"><p>Residencia para adultos mayores.<br>Mar del Plata · Próximamente Dolores.</p></div>
+  </div>
+  <p class="copy">Copyright © 2026 Residencia María del Mar</p>
+</footer>
 
-  <script src="script.js"></script>
-</body>
-</html>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button class="lb-x" aria-label="Cerrar">×</button>
+  <button class="lb-a" aria-label="Anterior">‹</button>
+  <div class="lb-f"></div>
+  <button class="lb-s" aria-label="Siguiente">›</button>
+  <p class="lb-c"></p>
+</div>
 
-  <script src="script.js?v=10"></script>
+<div class="social-float" aria-label="Redes sociales">
+  <a class="social-link instagram" href="https://instagram.com/mariadelmaresidencia" target="_blank" rel="noopener" aria-label="Seguinos en Instagram" title="Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="social-dot" cx="17.5" cy="6.5" r="1"/></svg>
+  </a>
+  <a class="social-link facebook" href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Visitá Facebook" title="Facebook">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.3v3h2.8v8z"/></svg>
+  </a>
+</div>
+<a class="wsp" href="https://wa.me/5492235644493?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20residencia%20y%20coordinar%20una%20visita.%20Muchas%20gracias" target="_blank" rel="noopener" aria-label="Contactanos por WhatsApp">
+  <span class="wsp-t"><b>¿Necesitás ayuda o querés visitarnos?</b>Contactanos y programá tu visita</span>
+  <span class="wsp-c"><svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><path fill="#fff" d="M16 3.5A12.4 12.4 0 0 0 5.4 22.2L3.6 28.5l6.500-1.700A12.400 12.400 0 1 0 16 3.500z"/><path fill="#25d366" d="M11.600 9.800c-.3-.6-.6-.6-.9-.6h-.7c-.3 0-.7.1-1 .5-.4.4-1.300 1.200-1.300 3 0 1.800 1.300 3.500 1.500 3.700.2.3 2.600 4.100 6.400 5.600 3.100 1.200 3.700.9 4.400.9.700-.1 2.200-.9 2.500-1.800.3-.9.3-1.600.2-1.800-.1-.2-.4-.3-.8-.5-.4-.2-2.200-1.100-2.500-1.200-.3-.1-.6-.2-.8.2-.2.4-1 1.200-1.100 1.400-.2.2-.4.3-.8.1-.4-.2-1.600-.6-3-1.800-1.100-1-1.800-2.200-2-2.600-.2-.4 0-.6.2-.8l.6-.7c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.7z"/></svg></span>
+</a>
+<script src="script.js?v=5"></script>
 </body>
 </html>
