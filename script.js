@@ -136,12 +136,15 @@ document.querySelectorAll('[data-galeria="acti"]').forEach(function(root){
 
 /* ===== POSTULACIONES ===== */
 var FORMULARIO_POSTULACION = 'https://docs.google.com/forms/d/e/1FAIpQLSdngu-JR4ssHfunH-ib8SW-hn6j79v7CwRi_fTt3CTeMI3meQ/viewform?usp=publish-editor';
+var FORMULARIO_POSTULACION_DOLORES = 'https://forms.gle/eyVSK1XR3yKEfDxi9';
 var LINKS_DOCUMENTACION = {
   Asistentes: FORMULARIO_POSTULACION,
   Profesionales: FORMULARIO_POSTULACION,
   Auxiliares: FORMULARIO_POSTULACION,
-  Enfermero: FORMULARIO_POSTULACION
+  Enfermero: FORMULARIO_POSTULACION,
+  Dolores: FORMULARIO_POSTULACION_DOLORES
 };
+
 
 var panelViejo = document.getElementById('panel');
 if (panelViejo) panelViejo.style.display = 'none';
