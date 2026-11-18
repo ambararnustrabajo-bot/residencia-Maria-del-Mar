@@ -173,8 +173,7 @@ var SERVICIOS = [
   ['Enfermería las 24 hs', 'Presencia permanente de enfermeras, que controlan y atienden a los residentes; otorgando los cuidados que cada uno requiere', 'servicio-2.jpg'],
   ['Nutricionista', 'La equilibrada y buena alimentación también es parte de la salud. Menues variados respetando las indicaciones médicas brindando calidad.', 'servicio-3.jpg'],
   ['Terapista ocupacional', 'Colabora a mantener la autonomía de cada residente, mediante la estimulación cognitiva, práctica de actividades lúdicas y ejercitación leve, para llevar una buena calidad de vida.', 'servicio-4.jpg'],
-  ['Actividades recreativas', 'Acá ningún día es igual: música, juegos, charlas y festejos. Porque la compañía, las risas y tener algo lindo para compartir también son parte del cuidado.', 'servicio-5.jpg']
-];
+  ['Actividades recreativas', ' Actividades lúdicas, música, pintura, dibujo y festejos; porque el tiempo compartido con charlas y risas también forman parte del cuidado.']
 
 (function(){
   var root = document.querySelector('.serv-g');
