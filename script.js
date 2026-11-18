@@ -11,15 +11,7 @@
   }
 })();
 
-/* ===== CARRUSEL UNIFICADO MAR DEL PLATA Y DOLORES ===== */
-var FORMULARIO_POSTULACION = 'https://docs.google.com/forms/d/e/1FAIpQLSdngu-JR4ssHfunH-ib8SW-hn6j79v7CwRi_fTt3CTeMI3meQ/viewform?usp=publish-editor';
-var LINKS_DOCUMENTACION = {
-  Asistentes: FORMULARIO_POSTULACION,
-  Profesionales: FORMULARIO_POSTULACION,
-  Auxiliares: FORMULARIO_POSTULACION,
-  Enfermero: FORMULARIO_POSTULACION, 
-};
-
+/* ===== CARRUSEL UNIFICADO MAR DEL PLATA (9000ms) ===== */
 let indiceActual = 0;
 let intervaloCarrusel;
 
@@ -27,7 +19,7 @@ function iniciarCarrusel() {
   clearInterval(intervaloCarrusel);
   intervaloCarrusel = setInterval(() => {
     cambiarFoto(1);
-  }, 9000); // 9000 ms = 9 segundos por foto
+  }, 9000);
 }
 
 function cambiarFoto(direccion) {
@@ -73,7 +65,93 @@ document.addEventListener('DOMContentLoaded', () => {
   iniciarCarrusel();
 });
 
+/* ===== GALERÍA DE ACTIVIDADES ===== */
+var GALERIAS = {
+  acti: [
+    { n: 'Actividades', d: 'Momentos para compartir, divertirse y sentirse acompañado.', f: [['actividad-1.jpg', 'Pintura'], ['actividad-2.jpg', 'Clases de gimnasia'], ['actividad-3.jpeg', 'Lúdicas'], ['actividad-4.jpeg', 'Talleres']] }
+  ]
+};
+
+document.querySelectorAll('[data-galeria="acti"]').forEach(function(root){
+  var G = GALERIAS.acti;
+  var g = 0, i = 0, x0 = null, arr = false;
+  var cambioTimer = null, autoTimer = null;
+  var grad = 'linear-gradient(135deg,#8fd3fb,#2c5a78)';
+  var quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  root.innerHTML = '<div class="chips" style="display:none"></div><p class="gdesc"></p><div class="visor" tabindex="0"><span class="amp">⤢ Ampliar</span><div class="foto"></div><p class="pie"></p><button class="fl ant" aria-label="Anterior">‹</button><button class="fl sig" aria-label="Siguiente">›</button><div class="pts"></div></div>';
+
+  var gd = root.querySelector('.gdesc');
+  var foto = root.querySelector('.foto');
+  var pie = root.querySelector('.pie');
+  var pts = root.querySelector('.pts');
+  var visor = root.querySelector('.visor');
+
+  function ver(){
+    var fs = G[g].f;
+    var d = fs[i];
+    gd.textContent = G[g].d || '';
+    clearTimeout(cambioTimer);
+    foto.classList.add('out');
+    cambioTimer = setTimeout(function(){
+      foto.style.backgroundImage = 'url("' + d[0] + '"),' + grad;
+      pie.textContent = d[1] || '';
+      foto.classList.remove('out');
+    }, 150);
+    pts.innerHTML = fs.map(function(_, k){
+      return '<i' + (k === i ? ' class="on"' : '') + '></i>';
+    }).join('');
+  }
+
+  function mover(n){
+    var l = G[g].f.length;
+    i = (i + n + l) % l;
+    ver();
+  }
+
+  function iniciarAuto(){
+    clearInterval(autoTimer);
+    if (quieto) return;
+    autoTimer = setInterval(function(){ mover(1); }, 4000);
+  }
+
+  root.querySelector('.ant').onclick = function(){ mover(-1); iniciarAuto(); };
+  root.querySelector('.sig').onclick = function(){ mover(1); iniciarAuto(); };
+
+  visor.onkeydown = function(e){
+    if (e.key === 'ArrowLeft') { mover(-1); iniciarAuto(); }
+    if (e.key === 'ArrowRight') { mover(1); iniciarAuto(); }
+  };
+
+  visor.onpointerdown = function(e){ x0 = e.clientX; clearInterval(autoTimer); };
+  visor.onpointerup = function(e){
+    arr = false;
+    if (x0 !== null && Math.abs(e.clientX - x0) > 40) {
+      mover(e.clientX < x0 ? 1 : -1);
+      arr = true;
+    }
+    x0 = null;
+    iniciarAuto();
+  };
+
+  visor.onclick = function(e){
+    if (arr || e.target.closest('.fl')) return;
+    LB.abrir(G[g].f, i);
+  };
+
+  ver();
+  iniciarAuto();
+});
+
 /* ===== POSTULACIONES ===== */
+var FORMULARIO_POSTULACION = 'https://docs.google.com/forms/d/e/1FAIpQLSdngu-JR4ssHfunH-ib8SW-hn6j79v7CwRi_fTt3CTeMI3meQ/viewform?usp=publish-editor';
+var LINKS_DOCUMENTACION = {
+  Asistentes: FORMULARIO_POSTULACION,
+  Profesionales: FORMULARIO_POSTULACION,
+  Auxiliares: FORMULARIO_POSTULACION,
+  Enfermero: FORMULARIO_POSTULACION, 
+};
+
 var panelViejo = document.getElementById('panel');
 if (panelViejo) panelViejo.style.display = 'none';
 
@@ -151,7 +229,7 @@ var SERVICIOS = [
   arrancar();
 })();
 
-/* ===== MENÚ SUPERIOR Y NAVEGACIÓN ===== */
+/* ===== MENÚ SUPERIOR Y NAVEGACIÓN MÓVIL ===== */
 (function(){
   var top = document.getElementById('top');
   var menu = document.getElementById('menu');
@@ -208,6 +286,52 @@ var SERVICIOS = [
       else openMenu(burger);
     });
   }
+
+  updateTopState();
+})();
+
+/* ===== FOTO AMPLIADA (LIGHTBOX) ===== */
+var LB = (function(){
+  var el = document.getElementById('lb');
+  var im = el ? el.querySelector('.lb-f') : null;
+  var cap = el ? el.querySelector('.lb-c') : null;
+  var L = [], k = 0;
+
+  if (!el) return { abrir: function(){} };
+
+  function ver(){
+    var d = L[k];
+    im.style.backgroundImage = 'url("' + d[0] + '"),linear-gradient(135deg,#8fd3fb,#2c5a78)';
+    cap.textContent = d[1] + (L.length > 1 ? '  ·  ' + (k + 1) + ' / ' + L.length : '');
+  }
+
+  function mover(n){ k = (k + n + L.length) % L.length; ver(); }
+  function cerrar(){ el.classList.remove('on'); document.body.style.overflow = ''; }
+
+  var btnX = el.querySelector('.lb-x'), btnA = el.querySelector('.lb-a'), btnS = el.querySelector('.lb-s');
+  if (btnX) btnX.onclick = cerrar;
+  if (btnA) btnA.onclick = function(){ mover(-1); };
+  if (btnS) btnS.onclick = function(){ mover(1); };
+
+  el.onclick = function(e){ if (e.target === el) cerrar(); };
+
+  window.addEventListener('keydown', function(e){
+    if (!el.classList.contains('on')) return;
+    if (e.key === 'Escape') cerrar();
+    if (e.key === 'ArrowLeft') mover(-1);
+    if (e.key === 'ArrowRight') mover(1);
+  });
+
+  return {
+    abrir: function(list, i){
+      L = list; k = i;
+      el.classList.toggle('uno', L.length < 2);
+      ver();
+      el.classList.add('on');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+})();
 
   updateTopState();
 })();
