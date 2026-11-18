@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Residencia María del Mar | Mar del Plata y Dolores</title>
-  <link rel="stylesheet" href="style.css?v=10" />
+  <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -129,7 +129,7 @@
     </div>
   </section>
 
-  <!-- CONOCÉ NUESTROS HOGARES (GALERÍA MEJORADA) -->
+  <!-- CONOCÉ NUESTROS HOGARES -->
   <section id="hogares" class="section">
     <div class="container">
       <div class="section-header">
@@ -138,13 +138,11 @@
         <p>Espacios luminosos, seguros y confortables diseñados para sentirse como en casa.</p>
       </div>
 
-      <!-- Selector de Sede en Galería -->
       <div class="gallery-tabs">
         <button class="g-tab active" data-sede="mdp">Sede Mar del Plata</button>
         <button class="g-tab" data-sede="dolores">Sede Dolores (Próximamente)</button>
       </div>
 
-      <!-- Showcase Principal -->
       <div class="gallery-showcase" id="galleryShowcase">
         <div class="gallery-main-frame">
           <img id="galleryMainImg" src="img/living.jpg" alt="Espacios de la residencia" />
@@ -158,18 +156,16 @@
           <button class="gallery-arrow next" id="nextSlide" aria-label="Foto siguiente">&#10095;</button>
         </div>
 
-        <!-- Barra de progreso de 9 segundos -->
         <div class="gallery-progress">
           <div class="gallery-progress-bar" id="galleryProgressBar"></div>
         </div>
 
-        <!-- Miniaturas -->
         <div class="gallery-thumbs" id="galleryThumbs"></div>
       </div>
     </div>
   </section>
 
-  <!-- SEDES Y POSTULACIÓN DOLORES -->
+  <!-- SEDES Y FORMULARIO DOLORES -->
   <section id="sedes" class="section section-alt">
     <div class="container">
       <div class="section-header">
@@ -178,7 +174,6 @@
       </div>
 
       <div class="sedes-grid">
-        <!-- Sede Mar del Plata -->
         <div class="sede-card">
           <span class="sede-status active">Abierta · Inscripciones disponibles</span>
           <h3>Sede Mar del Plata</h3>
@@ -190,15 +185,14 @@
           <a href="#contacto" class="btn-primary">Consultar disponibilidad</a>
         </div>
 
-        <!-- Sede Dolores -->
         <div class="sede-card highlight-card">
           <span class="sede-status soon">Nueva Apertura · Dolores</span>
           <h3>Sede Dolores</h3>
           <p>Muy pronto abrimos nuestras puertas en Dolores con la misma calidad humana y profesional que nos caracteriza.</p>
           <div class="postulacion-box">
-            <h4>¿Querés formar parte de nuestro equipo en Dolores?</h4>
-            <p>Si te querés postular para trabajar con nosotros en nuestra nueva sede, completá este formulario:</p>
-            <a href="https://forms.gle/eyVSK1XR3yKEfDxi9" target="_blank" rel="noopener noreferrer" class="btn-form">
+            <h4>¿Querés postularte para trabajar en Dolores?</h4>
+            <p>Si te querés postular, completá el formulario haciendo clic en el siguiente enlace:</p>
+            <a href="https://forms.gle/eyVSK1XR3yKEfDxi9" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-block; margin-top:8px;">
               Completar formulario de postulación
             </a>
           </div>
@@ -212,7 +206,7 @@
     <div class="container cta-banner">
       <div>
         <h2>Trabajá con nosotros</h2>
-        <p>Buscamos personas con vocación, empatía y compromiso para sumar a nuestro equipo de enfermería, cuidado, cocina y mantenimiento en Dolores y Mar del Plata.</p>
+        <p>Buscamos personas con vocación, empatía y compromiso para sumar a nuestro equipo en Dolores y Mar del Plata.</p>
       </div>
       <a href="https://forms.gle/eyVSK1XR3yKEfDxi9" target="_blank" rel="noopener noreferrer" class="btn-primary">
         Postularme ahora
@@ -236,6 +230,10 @@
       <p>&copy; 2026 Residencia María del Mar. Todos los derechos reservados.</p>
     </div>
   </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
   <script src="script.js?v=10"></script>
 </body>
