@@ -84,13 +84,53 @@
     </div>
   </section>
 
-  <section class="bloque hab" id="habitaciones">
-    <div class="wrap">
-      <h2>Nuestro Lugar</h2>
-      <p class="sub2">Espacios luminosos, cómodos y cuidados. Recorrelos uno por uno.</p>
-      <div data-galeria="hab"></div>
+ <section id="sedes" class="seccion-galeria">
+  <h2>Conocé Nuestros Hogares</h2>
+
+  <!-- Botones de selección de sede -->
+  <div class="botones-sedes">
+    <button class="btn-sede activo" onclick="mostrarSede('mdp', this)">
+      RESIDENCIA MAR DEL PLATA
+    </button>
+    <button class="btn-sede" onclick="mostrarSede('dolores', this)">
+      RESIDENCIA DOLORES · Próximamente
+    </button>
+  </div>
+
+  <!-- Contenido 1: Carrusel con TODAS las fotos juntas de Mar del Plata -->
+  <div id="galeria-mdp" class="contenedor-sede">
+    <div class="carrusel-wrapper">
+      <button class="flecha prev" onclick="cambiarFoto(-1)">&#10094;</button>
+      
+      <div class="slides">
+        <!-- Agregá acá TODAS tus fotos de Mar del Plata juntas -->
+        <img src="img/living.jpg" class="slide activa" alt="Living Residencia Mar del Plata">
+        <img src="img/comedor.jpg" class="slide" alt="Comedor Residencia Mar del Plata">
+        <img src="img/habitacion1.jpg" class="slide" alt="Habitación Residencia Mar del Plata">
+        <img src="img/habitacion2.jpg" class="slide" alt="Habitación compartida Mar del Plata">
+        <img src="img/bano.jpg" class="slide" alt="Baño adaptado Mar del Plata">
+      </div>
+
+      <button class="flecha next" onclick="cambiarFoto(1)">&#10095;</button>
     </div>
-  </section>
+    
+    <!-- Indicador de foto actual (ej: 1 / 5) -->
+    <p id="contador-fotos" class="contador">1 / 5</p>
+  </div>
+
+  <!-- Contenido 2: Cartel de Próximamente para Dolores -->
+  <div id="galeria-dolores" class="contenedor-sede" style="display: none;">
+    <div class="tarjeta-proximamente">
+      <span class="etiqueta-nueva">NUEVA SEDE</span>
+      <h3>Residencia María del Mar · Dolores</h3>
+      <p>Estamos preparando un nuevo espacio con la misma calidez, atención personalizada y confort de siempre.</p>
+      <p><strong>¡Muy pronto vas a poder conocer las instalaciones!</strong></p>
+      <a href="https://wa.me/TUNUMERO?text=Hola!%20Quisiera%20recibir%20información%20sobre%20la%20nueva%20sede%20en%20Dolores" target="_blank" class="btn-consultar">
+        Consultar por lista de espera
+      </a>
+    </div>
+  </div>
+</section>
 
   <section class="bloque acti" id="actividades">
     <div class="wrap">
