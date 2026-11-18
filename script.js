@@ -149,7 +149,7 @@ var LINKS_DOCUMENTACION = {
   Asistentes: FORMULARIO_POSTULACION,
   Profesionales: FORMULARIO_POSTULACION,
   Auxiliares: FORMULARIO_POSTULACION,
-  Enfermero: FORMULARIO_POSTULACION, 
+  Enfermero: FORMULARIO_POSTULACION
 };
 
 var panelViejo = document.getElementById('panel');
@@ -177,8 +177,8 @@ document.querySelectorAll('.rol').forEach(function(b){
 var SERVICIOS = [
   ['Servicio médico', 'Un médico que conoce a cada residente y cuida su salud de cerca: controles regulares, tratamientos al día y novedades para la familia.', 'servicio-1.jpg'],
   ['Enfermería las 24 hs', 'Presencia permanente de enfermeras, que controlan y atienden a los residentes; otorgando los cuidados que cada uno requiere', 'servicio-2.jpg'],
-  ['Nutricionista', 'La equilibrada y buena alimentación también es parte de la salud. Menues variados respetando las indicaciones medicas brindando calidad. ', 'servicio-3.jpg'],
-  ['Terapista ocupacional', ' Colabora a mantener la autonomia de cada residente, mediante la estimulacion cognitiva, practica de actividades lúdicas y ejercitación leve, para llevar una buena calidad de vida.', 'servicio-4.jpg'],
+  ['Nutricionista', 'La equilibrada y buena alimentación también es parte de la salud. Menues variados respetando las indicaciones médicas brindando calidad.', 'servicio-3.jpg'],
+  ['Terapista ocupacional', 'Colabora a mantener la autonomía de cada residente, mediante la estimulación cognitiva, práctica de actividades lúdicas y ejercitación leve, para llevar una buena calidad de vida.', 'servicio-4.jpg'],
   ['Actividades recreativas', 'Acá ningún día es igual: música, juegos, charlas y festejos. Porque la compañía, las risas y tener algo lindo para compartir también son parte del cuidado.', 'servicio-5.jpg']
 ];
 
@@ -197,7 +197,7 @@ var SERVICIOS = [
     b.className = 'sv';
     b.innerHTML = '<strong>' + s[0] + '</strong>' +
       '<div class="sv-body">' +
-        '<div class="sv-img" style="background-image:url(\'' + s[2] + '\'),linear-gradient(135deg,' + grad[n % grad.length] + ')"></div>' +
+        '<div class="sv-img" style="background-image:url(\'' + s[2] + '\'),linear-gradient(135deg,' + grad[n % grad.length] + ')" ></div>' +
         '<span>' + s[1] + '</span>' +
       '</div><i></i>';
     b.onclick = function(){ ir(n); arrancar(); };
@@ -287,6 +287,7 @@ var SERVICIOS = [
     });
   }
 
+  window.addEventListener('scroll', updateTopState, { passive: true });
   updateTopState();
 })();
 
@@ -332,11 +333,3 @@ var LB = (function(){
     }
   };
 })();
-
-  updateTopState();
-
-
-  }, TICK);
-
-  updateSlide();
-});
