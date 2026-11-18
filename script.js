@@ -13,10 +13,11 @@
 /* ===== GALERÍAS (Rápidas y con reproducción automática) ===== */
 var GALERIAS = {
   hab: [
-    { n: 'Habitaciones', d: 'Cada habitación es un rincón propio: luminosa, con su cama, placard, mesita de luz y ventana.', f: [['habitacion-1.jpg'], ['habitacion-2.jpg'], ['habitacion-4.jpg'], ['habitacion-5.jpg'], ['habitacion-6.jpg'], ['habitacion-7.jpg'], ['habitacion-8.jpg'], ['habitacion-9.jpg']] },
-    { n: 'Cocina / comedor', d: 'Acá se comparte la mesa: desayunos, almuerzos y meriendas en compañía.', f: [['cocina-1.jpg', 'Cocina y comedor']] },
-    { n: 'Planta baja / patio', d: 'Pasillos amplios y fáciles de recorrer, y un patio para salir a tomar aire.', f: [['patio-1.jpg', 'Planta baja y patio']] },
-    { n: 'Primer piso', d: 'Ambientes tranquilos y con mucha luz natural.', f: [['primerpiso-1.jpg', 'Primer piso']] }
+    { n:  ['entrada-1.jpg'], ['entrada-2.jpg'], ['entrada-3.jpg'], ['entrada-4.jpg']  }, 
+    { n: ['habitacion-1.jpg'], ['habitacion-2.jpg'], ['habitacion-4.jpg'], ['habitacion-5.jpg'], ['habitacion-6.jpg'], ['habitacion-7.jpg'], ['habitacion-8.jpg'], ['habitacion-9.jpg']}, 
+    { n:  ['comedor-1.jpg'],['comedor-2.jpg'],['cocina-1.jpg'], ['cocina-2.jpg'] }, 
+    { n: ['patio-1.jpg'] , ['patio-2.jpg'] }, 
+    { n:  ['primerpiso-1.jpg'], ['primerpiso-2.jpg'] }
   ],
   acti: [
     { n: 'Actividades', d: 'Momentos para compartir, divertirse y sentirse acompañado.', f: [['actividad-1.jpg', 'Pintura'], ['actividad-2.jpg', 'Clases de gimnasia'], ['actividad-3.jpeg', 'Lúdicas'], ['actividad-4.jpeg', 'Talleres']] }
