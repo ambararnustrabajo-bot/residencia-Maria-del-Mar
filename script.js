@@ -13,11 +13,11 @@
 /* ===== GALERÍAS (Rápidas y con reproducción automática) ===== */
 var GALERIAS = {
   hab: [
-    { f: ['entrada-1.jpg'], ['entrada-2.jpg'], ['entrada-3.jpg'], ['entrada-4.jpg']  }, 
-    { f: ['habitacion-1.jpg'], ['habitacion-2.jpg'], ['habitacion-4.jpg'], ['habitacion-5.jpg'], ['habitacion-6.jpg'], ['habitacion-7.jpg'], ['habitacion-8.jpg'], ['habitacion-9.jpg']}, 
-    { f:  ['comedor-1.jpg'],['comedor-2.jpg'],['cocina-1.jpg'], ['cocina-2.jpg'] }, 
-    { f: ['patio-1.jpg'] , ['patio-2.jpg'] }, 
-    { f:  ['primerpiso-1.jpg'], ['primerpiso-2.jpg'] },
+    { f: [['entrada-1.jpg'], ['entrada-2.jpg'], ['entrada-3.jpg'], ['entrada-4.jpg'] ] }, 
+    { f: [['habitacion-1.jpg'], ['habitacion-2.jpg'], ['habitacion-4.jpg'], ['habitacion-5.jpg'], ['habitacion-6.jpg'], ['habitacion-7.jpg'], ['habitacion-8.jpg'], ['habitacion-9.jpg']]}, 
+    { f: [ ['comedor-1.jpg'],['comedor-2.jpg'],['cocina-1.jpg'], ['cocina-2.jpg']] }, 
+    { f: [['patio-1.jpg'] , ['patio-2.jpg'] ]}, 
+    { f: [ ['primerpiso-1.jpg'], ['primerpiso-2.jpg']] },
   ],
   acti: [
     { n: 'Actividades', d: 'Momentos para compartir, divertirse y sentirse acompañado.', f: [['actividad-1.jpg', 'Pintura'], ['actividad-2.jpg', 'Clases de gimnasia'], ['actividad-3.jpeg', 'Lúdicas'], ['actividad-4.jpeg', 'Talleres']] }
