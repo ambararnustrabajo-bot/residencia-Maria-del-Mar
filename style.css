@@ -57,47 +57,177 @@ h2{font-size:clamp(2.2rem,5.5vw,4rem);color:var(--sky)}
  
  
 /* ---------- GALERÍAS (Habitaciones y Actividades) ---------- */
-.hab{background:var(--navy2)}
-.sub2{max-width:560px;margin-top:.8rem;color:#cfe3f1}
-.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.8rem 0 1rem}
-.chip{font:inherit;cursor:pointer;border:1.5px solid var(--sea);background:transparent;color:inherit;padding:.5rem 1.2rem;border-radius:999px;transition:background .2s,color .2s}
-.chip[aria-pressed=true]{background:var(--sea);color:var(--navy)}
-.visor{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:var(--navy);touch-action:pan-y}
-.hab [data-galeria="hab"].sin-seleccion .gdesc,.hab [data-galeria="hab"].sin-seleccion .visor,.hab [data-galeria="hab"].sin-seleccion .volver-categorias{display:none}
-.hab [data-galeria="hab"].categoria-elegida .chips{display:none}
-.hab [data-galeria="hab"].categoria-elegida .volver-categorias{display:flex}
-.volver-categorias{align-items:center;gap:.55rem;margin-top:1.4rem;padding:.65rem 1rem;border:1px solid rgba(184,228,255,.35);border-radius:999px;background:transparent;color:inherit;font:inherit;font-size:.95rem;cursor:pointer;transition:background .2s,border-color .2s}
-.volver-categorias:hover{background:rgba(79,195,247,.12);border-color:var(--sea)}
-.volver-categorias svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.foto{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1);transition:opacity .32s ease,transform .32s ease}
-.foto.out{opacity:0;transform:scale(1.012)}
-.pie{position:absolute;left:0;right:0;bottom:0;padding:3rem 1.5rem 1.3rem;background:linear-gradient(transparent,rgba(13,18,25,.8));font-family:var(--serif);font-size:1.4rem;color:#fff}
-.fl{position:absolute;top:50%;translate:0 -50%;width:48px;height:48px;border-radius:50%;border:0;cursor:pointer;background:rgba(247,251,255,.9);color:var(--deep);font-size:1.7rem;line-height:1}
-.ant{left:14px}.sig{right:14px}
-.pts{position:absolute;right:1.3rem;bottom:1.4rem;display:flex;gap:6px}
-.pts i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.5);transition:width .25s}
-.pts i.on{background:#fff;width:22px;border-radius:5px}
-.acti{background:var(--sky);color:#15384f}
-.acti h2{color:var(--deep)}
-.acti .sub2{color:#15384f}
-.acti .chip{border-color:var(--deep)}
-.acti .chip[aria-pressed=true]{background:var(--deep);color:#fff}
-@media(prefers-reduced-motion:reduce){.foto{transition:none}.foto.out{transform:none}}
-@media(max-width:760px){
-  body.recorrido-movil.seccion-movil-activa .hab [data-galeria="hab"].categoria-elegida .chips{display:none}
-  body.recorrido-movil.seccion-movil-activa .hab .chips,
-  body.recorrido-movil.seccion-movil-activa .acti .chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.45rem}
-  body.recorrido-movil.seccion-movil-activa .hab .chip,
-  body.recorrido-movil.seccion-movil-activa .acti .chip{min-width:0;min-height:42px;padding:.4rem .45rem;font-size:.82rem;line-height:1.2;text-align:center}
-  body.recorrido-movil.seccion-movil-activa .hab:not([data-galeria="hab"]) .chip{min-height:42px}
-  body.recorrido-movil.seccion-movil-activa .hab [data-galeria="hab"]:not(.categoria-elegida) .chip{min-height:98px;padding:.8rem;border:1px solid rgba(184,228,255,.32);border-radius:18px;background:linear-gradient(155deg,rgba(184,228,255,.12),rgba(11,74,112,.2));box-shadow:inset 0 1px rgba(255,255,255,.08);font-size:.96rem;font-weight:500;line-height:1.3;transition:background .2s,border-color .2s,color .2s,transform .2s}
-  body.recorrido-movil.seccion-movil-activa .hab [data-galeria="hab"]:not(.categoria-elegida) .chip:active{transform:scale(.98);border-color:var(--sea);background:rgba(79,195,247,.22)}
-  body.recorrido-movil.seccion-movil-activa .hab [data-galeria="hab"].categoria-elegida .visor{aspect-ratio:1.04/1;border-radius:16px}
-  body.recorrido-movil.seccion-movil-activa .hab .volver-categorias{margin-top:.4rem}
-  body.recorrido-movil.seccion-movil-activa .hab .chips,
-  body.recorrido-movil.seccion-movil-activa .acti .chips{position:sticky;top:0;z-index:5;padding:.35rem 0;margin:0 0 1rem}
-  body.recorrido-movil.seccion-movil-activa .hab .chips{background:var(--navy2)}
-  body.recorrido-movil.seccion-movil-activa .acti .chips{background:var(--sky)}
+/* --- ESTILOS PARA LAS SEDES Y GALERÍA UNIFICADA --- */
+
+.seccion-galeria {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f9f9f9; /* Cambialo según el color de fondo de tu web */
+}
+
+.seccion-galeria h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* Botones de selección (Mar del Plata / Dolores) */
+.botones-sedes {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.btn-sede {
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-sede:hover {
+  background-color: #d0d0d0;
+}
+
+/* Botón activo (el que está seleccionado) */
+.btn-sede.activo {
+  background-color: #0066cc; /* Ponele el color principal que uses en tu web */
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 102, 204, 0.3);
+}
+
+/* Contenedor del carrusel */
+.carrusel-wrapper {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.slides {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 450px; /* Altura fija para que las fotos no salten de tamaño */
+}
+
+.slides img.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.slides img.slide.activa {
+  opacity: 1;
+}
+
+/* Flechas de navegación manual */
+.flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.flecha:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.flecha.prev { left: 15px; }
+.flecha.next { right: 15px; }
+
+/* Contador de fotos (ej: 1 / 5) */
+.contador {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #666;
+  font-weight: 600;
+}
+
+/* Tarjeta de Próximamente (para Dolores) */
+.tarjeta-proximamente {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.etiqueta-nueva {
+  background-color: #28a745;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 5px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tarjeta-proximamente h3 {
+  margin-top: 15px;
+  font-size: 1.6rem;
+  color: #222;
+}
+
+.tarjeta-proximamente p {
+  color: #555;
+  margin: 15px 0;
+  line-height: 1.5;
+}
+
+.btn-consultar {
+  display: inline-block;
+  margin-top: 15px;
+  background-color: #25d366; /* Verde WhatsApp */
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn-consultar:hover {
+  background-color: #1ebe5d;
+}
+
+/* Adaptabilidad para celulares pequeños */
+@media (max-width: 768px) {
+  .slides {
+    height: 300px; /* Reduce un poco la altura en celulares */
+  }
+  .botones-sedes {
+    flex-direction: column;
+    padding: 0 15px;
+  }
+  .btn-sede {
+    width: 100%;
+  }
 }
  
 /* ---------- TRABAJÁ CON NOSOTROS ---------- */
